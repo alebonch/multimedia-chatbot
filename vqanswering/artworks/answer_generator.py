@@ -13,7 +13,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_KEY')
 # Set up the model
-model_engine = "gpt-3.5-turbo-0125"  # "text-davinci-003""gpt-4"gpt-3.5-turbo-1106 gpt-4-0125-preview
+model_engine = "gpt-4-0125-preview"  # "text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
 i_dont_know_answer = ["I don't have this information",
                       "The context does not provide any",
                       "The context provided does not",
@@ -43,22 +43,49 @@ class AnswerGenerator:
                  f"Context: {context}. \n" \
                  f"Question: {question}. \n" \
                  f"Answer:"
+        # system_prompt = (
+        #     "I want you to act as an art expert. Answer in user's language as concisely as possible. "
+        #     # "Provide a clear and concise answer in the same question's language within 30 words. "
+        #     "Creating your answer pay attention to the following rules: "
+        #     "If the question is unrelated to the artwork, please state so. "
+        #     "If the information is not available in the Context, indicate that you don't have the information, writing in the language of the question 'I don't have this information.' "
+        #     "If there's difficulty understanding the question, ask the user to clarify the question. "
+        #     "Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
+        #     "If the question is in first person singular, respond in second person singular. "
+        #     # "If the translated answer is longer than the limit of 30 words, rephrase it to stay in that limit. "
+        #     "If the Context is not enough to answer, respond with your internal knowledge, saying that the answer could be imprecise. "
+        #     # "Remember to answer in the same language as the question. "
+        #     "It's very important that the answer is in the same language of the question "
+        # )
         system_prompt = (
-            "I want you to act as an art expert and to answer in the same language of the question. "
-            "Provide a clear and concise answer in the same language as the question within 30 words. "
-            "If the question is unrelated to the artwork, please state so. "
-            "If the information is not available in the Context, indicate that you don't have the information, "
-            "writing in the language of the question 'I don't have this information.' "
-            "If there's difficulty understanding the question, ask the user to clarify the question. "
-            "Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
-            "If the question is in first person singular, respond in second person singular. "
-            "If the translated answer is longer than the limit of 30 words, rephrase it to stay in that limit. "
-            "If the Context is not enough to answer, respond with your internal knowledge, saying that the answer could be imprecise. "
-            "Remember to answer in the same language as the question. "
-            "Examples: Question in english, answer in english. Question in italian, answer in italian. Question in French, answer in French."
+            "I will act as an art and language expert and respond in the same language as your question as concisely as possible within 30 words. "
+            "I will translate the answer in the same language as your question."
+            "I'll keep in mind the following guidelines: "
+            "- If your question is unrelated to artwork, I will let you know. "
+            "- If I don't have the information you're asking for, I'll indicate that by saying 'I don't have this information' in the language of your question. "
+            "- If I find it difficult to understand your question, I'll ask you to clarify. "
+            "- I won't start my response with 'Answer:' and will only use information available in our conversation. "
+            "- If I can't answer based on our conversation, I may provide an answer based on my internal knowledge, but it could be imprecise."
+            "- If the answer is longer than 30 words, I'll rephrase it to stay within the limit. ")
+        system_prompt = (
+            "Follow these steps to answer the user question: "
+            "Step 1: Read the question carefully, understand it and remember the language it has been written. "
+            "Step 2: Provide a clear and concise answer keeping in mind the following guidelines: "
+            "- Answer in the same language as the question. "
+            "- Answer within 30 words "
+            "- If the question is unrelated to the artwork, please state so. "
+            "- If the information is not available in the Context, indicate that you don't have the information, writing in the language of the question 'I don't have this information.' "
+            "- If there's difficulty understanding the question, ask the user to clarify the question. "
+            "- Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
+            "- If the question is in first person singular, respond in second person singular. "
+            # "- If the answer is not in the same language as the question, translate it. "
+            "Step 3: Translate the produced answer in the same language of the question. "
+            # "Step 4: Write in a json format the question, the question language, the answer and the translated answer. "
+            "Step 4: Provide the answer to the user in json format with the following keys: question, question language, answer, answer translated. "
         )
+
         if self.last_question != "" and self.last_answer != "":
-            system_prompt += f"if they exist, take in account also the last question and answer: Q: {self.last_question} A: {self.last_answer} \n"
+            system_prompt += f" - I'll take into account the last question and answer, if they exist: Q: {self.last_question} A: {self.last_answer} \n"
 
         print(prompt, "\n", system_prompt)
         answer = ""
@@ -75,7 +102,9 @@ class AnswerGenerator:
                     ],
                     temperature=0.25,
                 )
+                # choices = completion.choices
                 answer = completion.choices[0].message["content"]
+                # print('choices', choices)
                 result_found = True
                 if any(keyword in answer for keyword in i_dont_know_answer):
                     result_found = False
@@ -97,5 +126,23 @@ class AnswerGenerator:
             retry_count += 1
             print("Retrying in {} second(s)...".format(retry_delay))
             time.sleep(retry_delay)
-        print(answer)
-        return answer
+        # prompt_translate = (f"Consider the question '{question}' and the provided answer '{answer} "
+        #                     f"Question: 'Translate the answer in the language of the question. \n"
+        #                     f"Answer:")
+        # system_prompt_translate = (
+        #     "I will act as an art expert and able language translator. "
+        #     "I will translate the answer in the same language as your question. "
+        # )
+        # translation = openai.ChatCompletion.create(
+        #     model=model_engine,
+        #     messages=[
+        #         {"role": "system", "content": system_prompt_translate},
+        #         {"role": "user", "content": prompt_translate},
+        #     ],
+        #     temperature=0.25,
+        # )
+        # answer_translated = translation.choices[0].message["content"]
+        answer_dic = json.loads(answer)
+        print('answer', answer)
+        print(answer_dic['answer'])
+        return answer_dic['answer']

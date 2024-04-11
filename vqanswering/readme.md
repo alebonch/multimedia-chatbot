@@ -161,7 +161,7 @@ Click on either **Add** or **ADD ARTWORK** buttons and complete the form with th
    - Ensure to provide a detailed description in the **Description** field for better accuracy in the chatbot.
    - The **Link** field will be automatically populated.
 After completing the form, click on the **Save** button to add the artwork to the database.
-When you finish adding the artwork, you need to exit and start the server again to interact the new artwork in the gallery.
+IMPORTANT: When you finish adding the artwork, you need to exit and start the server again to interact the new artwork in the gallery.
 
 2. **Add artworks from a Folder**: \
 Go to static/assets/add_new_files folder. Here you can save all the artworks images you want to add to the database following these rules:

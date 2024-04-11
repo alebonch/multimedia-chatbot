@@ -1,5 +1,6 @@
 import os
 import math
+import urllib
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
@@ -103,15 +104,20 @@ def handle_chat_question(request):
     if not url or not question:
         return JsonResponse({'answer': 'Invalid request'})
 
-    address_title = url.rsplit('gallery/')[1][:-1]
-    title = address_title.replace('_', ' ')
-
-    artwork = Artwork.objects.filter(title__iexact=title).first()
+    address_link = url.rsplit('gallery/')[1][:-1]
+    decoded_link = urllib.parse.unquote(address_link)
+    # title = address_title.replace('_', ' ') .replace('-', ' ').replace('%E2%80%93', '–')
+    artwork = Artwork.objects.filter(link__iexact=decoded_link).first()
+    print("in handle chat", decoded_link)
+    # print(title)
+    # artwork = Artwork.objects.filter(title__iexact=title).first()
 
     if artwork is None:
         return JsonResponse({'answer': 'Artwork not found'})
 
     context = artwork.description
+    title = artwork.title
+    print(title)
     answer = AnswerGenerator().produce_answer(question, title, context)
 
     return JsonResponse({'answer': answer})
