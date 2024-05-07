@@ -221,8 +221,8 @@ prompt = "Provide a clear and concise answer in the same language as the questio
 ```
 
 The OpenAI GPT-3 API takes the prompt and searches for an answer within the context of the artwork provided. If the answer is found within the contextual phrases, it is reformulated to ensure that the response does not exceed 15 words. If the answer cannot be found within the contextual phrases, the API will return "I don't know" or "I don't have this information" as a response.
-
-When the chatbot could not find an answer within the contextual phrases, it feeds a json file called **unresolved_question.json** in **static/assets/json** folder with the artwork's title and the unanswered question. This file could be usefull for museum curator to improve the description with the missing information.
+The question and answer pairs resolved by the chatbot are stored in a JSON file called **qa_pairs.json** within the **static/assets/json** directory. This file serves as a reference to evaluate the accuracy of the chatbot's responses and to update the descriptions in the artworks database accordingly.
+When the chatbot fails to provide an answer based on the provided context, it logs the unresolved question along with the corresponding artwork's title in a JSON file named **unresolved_question.json** within **static/assets/json** directory. This file can be valuable for museum curators seeking to enhance the artwork descriptions with the missing information.
 ```
 ---
 
