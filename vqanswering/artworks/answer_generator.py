@@ -5,7 +5,7 @@ import time
 import openai
 import json
 
-import requests
+import string
 from dotenv import load_dotenv
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -17,10 +17,53 @@ model_engine = "gpt-4-0125-preview"  # "text-davinci-003""gpt-4"gpt-3.5-turbo-11
 i_dont_know_answer = ["I don't have this information",
                       "The context does not provide any",
                       "The context provided does not",
-                      "not specified in the provided"]
+                      "not specified in the provided",
+                      "there is no information"]
+i_dont_know_any_language = {
+    "English": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "Italian": [
+        "Non ho queste informazioni",
+        "Il contesto non fornisce alcuna informazione",
+        "Il contesto fornito non fornisce",
+        "non specificato nel fornito",
+        "non c'è alcuna informazione"
+    ],
+    "French": [
+        "Je n'ai pas cette information",
+        "Le contexte ne fournit aucune information",
+        "Le contexte fourni ne fournit pas",
+        "non spécifié dans le fourni",
+        "il n'y a pas d'information"
+    ],
+    "German": [
+        "Ich habe diese Informationen nicht",
+        "Der Kontext liefert keine Informationen",
+        "Der bereitgestellte Kontext liefert nicht",
+        "nicht im bereitgestellten spezifiziert",
+        "es gibt keine Informationen"
+    ],
+    "Greek": [
+        "Δεν έχω αυτές τις πληροφορίες",
+        "Ο περιβάλλοντας χώρος δεν παρέχει καμία πληροφορία",
+        "Ο παρεχόμενος περιβάλλοντας χώρος δεν παρέχει",
+        "δεν προσδιορίζεται στο παρεχόμενο",
+        "δεν υπάρχουν πληροφορίες"
+    ]
+}
 
 class AnswerGenerator:
     _instance = None
+
+    def __init__(self):
+        self.unresolved_questions = None
+        self.solved_questions = None
+
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(AnswerGenerator, cls).__new__(cls)
@@ -28,7 +71,23 @@ class AnswerGenerator:
             cls._instance.last_answer = ""
             cls._instance.last_artwork_title = ""
             cls._instance.unresolved_questions = {}
+            cls._instance.solved_questions = {}
+            cls._instance.load_existing_data()
         return cls._instance
+
+    def load_existing_data(self):
+        if os.path.exists("static/assets/json/qa_pairs.json"):
+            with open("static/assets/json/qa_pairs.json", "r", encoding='utf-8') as json_file:
+                self.solved_questions = json.load(json_file)
+        if os.path.exists("static/assets/json/unresolved_questions.json"):
+            with open("static/assets/json/unresolved_questions.json", "r", encoding='utf-8') as json_file:
+                self.unresolved_questions = json.load(json_file)
+
+    def save_data(self):
+        with open("static/assets/json/qa_pairs.json", "w", encoding='utf-8') as json_file:
+            json.dump(self.solved_questions, json_file, indent=2, ensure_ascii=False)
+        with open("static/assets/json/unresolved_questions.json", "w", encoding='utf-8') as json_file:
+            json.dump(self.unresolved_questions, json_file, indent=2, ensure_ascii=False)
 
     def produce_answer(self, question, artwork_title, context):
         if artwork_title != self.last_artwork_title:
@@ -43,20 +102,6 @@ class AnswerGenerator:
                  f"Context: {context}. \n" \
                  f"Question: {question}. \n" \
                  f"Answer:"
-        # system_prompt = (
-        #     "I want you to act as an art expert. Answer in user's language as concisely as possible. "
-        #     # "Provide a clear and concise answer in the same question's language within 30 words. "
-        #     "Creating your answer pay attention to the following rules: "
-        #     "If the question is unrelated to the artwork, please state so. "
-        #     "If the information is not available in the Context, indicate that you don't have the information, writing in the language of the question 'I don't have this information.' "
-        #     "If there's difficulty understanding the question, ask the user to clarify the question. "
-        #     "Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
-        #     "If the question is in first person singular, respond in second person singular. "
-        #     # "If the translated answer is longer than the limit of 30 words, rephrase it to stay in that limit. "
-        #     "If the Context is not enough to answer, respond with your internal knowledge, saying that the answer could be imprecise. "
-        #     # "Remember to answer in the same language as the question. "
-        #     "It's very important that the answer is in the same language of the question "
-        # )
 
         system_prompt = (
             "Follow these steps to answer the user question: "
@@ -93,30 +138,56 @@ class AnswerGenerator:
                 )
                 # choices = completion.choices
                 answer = completion.choices[0].message["content"]
-                # print('choices', choices)
-                result_found = True
-                if any(keyword in answer for keyword in i_dont_know_answer):
-                    result_found = False
-                if not result_found:
+
+                if answer.startswith("{"):
+                    answer_dic = json.loads(answer)
+                else:
+                    answer_dic = {"answer": answer}
+
+                normalized_question = normalize_question(question)
+                if answer_dic['question language']:
+                    language = answer_dic['question language']
+                else:
+                    language = "English"
+                unresolved = any(keyword in answer for keyword in i_dont_know_any_language[language])
+                if not unresolved:
+                    if artwork_title not in self.solved_questions:
+                        self.solved_questions[artwork_title] = {"QA_pairs": []}
+                    # Check if the question-answer pair already exists
+                    qa_pairs = self.solved_questions[artwork_title]["QA_pairs"]
+                    if not any(normalize_question(pair["question"]) == normalized_question  for pair in qa_pairs):
+                        self.solved_questions[artwork_title]["QA_pairs"].append({
+                            "question": question,
+                            "answer": answer_dic['answer']
+                        })
+                else:
                     if artwork_title not in self.unresolved_questions:
                         self.unresolved_questions[artwork_title] = {"unresolved": []}
-
-                    self.unresolved_questions[artwork_title]["unresolved"].append(question)
-                    with open("static/assets/json/unresolved_questions.json", "w") as json_file:
-                        json.dump(self.unresolved_questions, json_file, indent=2)
+                    unresolved_q = self.unresolved_questions[artwork_title]["unresolved"]
+                    normalized_unresolved_q = [normalize_question(q) for q in unresolved_q]
+                    if normalized_question not in normalized_unresolved_q:
+                        self.unresolved_questions[artwork_title]["unresolved"].append(question)
 
                 self.last_question = question
-                self.last_answer = answer
+                self.last_answer = answer_dic['answer']
+                self.save_data()
                 break  # Break the loop if the API call is successful
             except openai.error.OpenAIError as e:
                 print("An error occurred: {}".format(e))
-                answer = "There's a problem with the OpenAI API, please try again later"
+                self.last_answer = "There's a problem with the OpenAI API, please try again later"
 
             retry_count += 1
             print("Retrying in {} second(s)...".format(retry_delay))
             time.sleep(retry_delay)
 
-        answer_dic = json.loads(answer)
         print('answer', answer)
-        print(answer_dic['answer'])
-        return answer_dic['answer']
+        print(self.last_answer)
+        return self.last_answer
+
+
+def normalize_question(question):
+    # Convert to lowercase
+    question = question.lower()
+    # Remove punctuation
+    question = question.translate(str.maketrans('', '', string.punctuation))
+    return question

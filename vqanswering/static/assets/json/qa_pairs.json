@@ -1,0 +1,54 @@
+{
+  "Cherry Rage 1920": {
+    "QA_pairs": [
+      {
+        "question": "who are in there?",
+        "answer": "The artwork depicts people from all walks of life, including women, former officers, workers, and students participating in the protest."
+      },
+      {
+        "question": "Chi è il cavallo?",
+        "answer": "Non c'è informazione su un cavallo nell'opera 'Cherry Rage 1920'."
+      },
+      {
+        "question": "Cosa sono le Cherry?",
+        "answer": "Le 'Cherry' si riferiscono alle ciliegie, al centro delle proteste per i prezzi elevati nel 1920 a Graz."
+      },
+      {
+        "question": "Cosa sto guardando?",
+        "answer": "Stai guardando 'Kirschenrummel 1920', un'opera di Axl Leskoschek che rappresenta la rivolta per il caro-prezzi delle ciliegie a Graz nel 1920."
+      },
+      {
+        "question": "chi è l'autore?",
+        "answer": "L'autore è Axl Leskoschek."
+      },
+      {
+        "question": "chi è l'autoe?",
+        "answer": "L'autore è Axl Leskoschek."
+      },
+      {
+        "question": "Cosa è?",
+        "answer": "Un'opera d'arte di Axl Leskoschek che rappresenta la rivolta 'Cherry Rage' del 1920 a Graz, realizzata con la tecnica della xilografia."
+      },
+      {
+        "question": "Cosa sto guardando",
+        "answer": "Stai guardando 'Kirschenrummel 1920', un'incisione su legno di Axl Leskoschek che rappresenta la rivolta per il caro-prezzi delle ciliegie a Graz."
+      }
+    ]
+  },
+  "Ingresso Galleria XXII": {
+    "QA_pairs": [
+      {
+        "question": "che cosa sto guardando?",
+        "answer": "Stai guardando una foto d'epoca che ritrae i dirigenti della miniera davanti all'ingresso di una delle gallerie."
+      },
+      {
+        "question": "chi sono queste persone?",
+        "answer": "Sono i dirigenti della miniera."
+      },
+      {
+        "question": "Perchè sono vestiti così?",
+        "answer": "Sono vestiti in modo formale per la foto, rappresentando il loro ruolo di dirigenti della miniera."
+      }
+    ]
+  }
+}
