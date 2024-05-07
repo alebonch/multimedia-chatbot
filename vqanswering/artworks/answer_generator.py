@@ -60,10 +60,6 @@ i_dont_know_any_language = {
 class AnswerGenerator:
     _instance = None
 
-    def __init__(self):
-        self.unresolved_questions = None
-        self.solved_questions = None
-
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(AnswerGenerator, cls).__new__(cls)
@@ -141,14 +137,16 @@ class AnswerGenerator:
 
                 if answer.startswith("{"):
                     answer_dic = json.loads(answer)
+                    language = answer_dic["question language"]
                 else:
                     answer_dic = {"answer": answer}
+                    language = "English"
 
                 normalized_question = normalize_question(question)
-                if answer_dic['question language']:
-                    language = answer_dic['question language']
-                else:
-                    language = "English"
+                # if answer_dic["question language"]:
+                #     language = answer_dic["question language"]
+                # else:
+                #     language = "English"
                 unresolved = any(keyword in answer for keyword in i_dont_know_any_language[language])
                 if not unresolved:
                     if artwork_title not in self.solved_questions:
