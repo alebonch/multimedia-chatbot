@@ -1,5 +1,6 @@
 import ast
 import os
+import re
 import time
 
 import openai
@@ -7,6 +8,7 @@ import json
 
 import string
 from dotenv import load_dotenv
+from langdetect import detect
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 # OPEN-AI APIs
@@ -14,48 +16,68 @@ load_dotenv()
 openai.api_key = os.getenv('OPENAI_KEY')
 # Set up the model
 model_engine = "gpt-4-0125-preview"  # "text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
-i_dont_know_answer = ["I don't have this information",
-                      "The context does not provide any",
-                      "The context provided does not",
-                      "not specified in the provided",
-                      "there is no information"]
-i_dont_know_any_language = {
-    "English": [
-        "I don't have this information",
-        "The context does not provide any",
-        "The context provided does not",
-        "not specified in the provided",
-        "there is no information"
-    ],
-    "Italian": [
-        "Non ho queste informazioni",
-        "Il contesto non fornisce alcuna informazione",
-        "Il contesto fornito non fornisce",
-        "non specificato nel fornito",
-        "non c'è alcuna informazione"
-    ],
-    "French": [
-        "Je n'ai pas cette information",
-        "Le contexte ne fournit aucune information",
-        "Le contexte fourni ne fournit pas",
-        "non spécifié dans le fourni",
-        "il n'y a pas d'information"
-    ],
-    "German": [
-        "Ich habe diese Informationen nicht",
-        "Der Kontext liefert keine Informationen",
-        "Der bereitgestellte Kontext liefert nicht",
-        "nicht im bereitgestellten spezifiziert",
-        "es gibt keine Informationen"
-    ],
-    "Greek": [
-        "Δεν έχω αυτές τις πληροφορίες",
-        "Ο περιβάλλοντας χώρος δεν παρέχει καμία πληροφορία",
-        "Ο παρεχόμενος περιβάλλοντας χώρος δεν παρέχει",
-        "δεν προσδιορίζεται στο παρεχόμενο",
-        "δεν υπάρχουν πληροφορίες"
-    ]
-}
+
+
+# i_dont_know_answer = ["I don't have this information",
+#                       "The context does not provide any",
+#                       "The context provided does not",
+#                       "not specified in the provided",
+#                       "there is no information"]
+#
+# i_dont_know_any_language = {
+#     "English": [
+#         "I don't have this information",
+#         "The context does not provide any",
+#         "The context provided does not",
+#         "not specified in the provided",
+#         "there is no information"
+#     ],
+#     "Italian": [
+#         "Non ho queste informazioni",
+#         "Il contesto non fornisce alcuna informazione",
+#         "Il contesto fornito non fornisce",
+#         "non specificato nel fornito",
+#         "non c'è alcuna informazione"
+#     ],
+#     "French": [
+#         "Je n'ai pas cette information",
+#         "Le contexte ne fournit aucune information",
+#         "Le contexte fourni ne fournit pas",
+#         "non spécifié dans le fourni",
+#         "il n'y a pas d'information"
+#     ],
+#     "German": [
+#         "Ich habe diese Informationen nicht",
+#         "Der Kontext liefert keine Informationen",
+#         "Der bereitgestellte Kontext liefert nicht",
+#         "nicht im bereitgestellten spezifiziert",
+#         "es gibt keine Informationen"
+#     ],
+#     "Greek": [
+#         "Δεν έχω αυτές τις πληροφορίες",
+#         "Ο περιβάλλοντας χώρος δεν παρέχει καμία πληροφορία",
+#         "Ο παρεχόμενος περιβάλλοντας χώρος δεν παρέχει",
+#         "δεν προσδιορίζεται στο παρεχόμενο",
+#         "δεν υπάρχουν πληροφορίες"
+#     ]
+# }
+
+
+def load_i_dont_know_any_language():
+    with open("static/assets/json/i_dont_know_any_language.json", "r", encoding='utf-8') as json_file:
+        i_dont_know_any_language = json.load(json_file)
+    return i_dont_know_any_language
+
+
+def load_json_file(file):
+    with open(file, "r", encoding='utf-8') as json_file:
+        data = json.load(json_file)
+    return data
+
+
+i_dont_know_any_language = load_json_file("static/assets/json/i_dont_know_any_language.json")
+languages = load_json_file("static/assets/json/languages.json")
+
 
 class AnswerGenerator:
     _instance = None
@@ -85,13 +107,12 @@ class AnswerGenerator:
         with open("static/assets/json/unresolved_questions.json", "w", encoding='utf-8') as json_file:
             json.dump(self.unresolved_questions, json_file, indent=2, ensure_ascii=False)
 
-    def produce_answer(self, question, artwork_title, context):
+    def produce_answer(self, question, language, artwork_title, context):
         if artwork_title != self.last_artwork_title:
             # Reset last_question and last_answer if artwork_title has changed
             self.last_question = ""
             self.last_answer = ""
             print('resetted last question and last answer')
-
         self.last_artwork_title = artwork_title
 
         prompt = f"Consider the artwork titled '{artwork_title}' and its Context. " \
@@ -117,7 +138,7 @@ class AnswerGenerator:
         if self.last_question != "" and self.last_answer != "":
             system_prompt += f" - I'll take into account the last question and answer, if they exist: Q: {self.last_question} A: {self.last_answer} \n"
 
-        print(prompt, "\n", system_prompt)
+        print(language)
         answer = ""
         retry_count = 0
         max_retries = 3
@@ -135,25 +156,15 @@ class AnswerGenerator:
                 # choices = completion.choices
                 answer = completion.choices[0].message["content"]
 
-                if answer.startswith("{"):
-                    answer_dic = json.loads(answer)
-                    language = answer_dic["question language"]
-                else:
-                    answer_dic = {"answer": answer}
-                    language = "English"
-
+                answer_dic = analyze_answer(answer, question, language)
                 normalized_question = normalize_question(question)
-                # if answer_dic["question language"]:
-                #     language = answer_dic["question language"]
-                # else:
-                #     language = "English"
                 unresolved = any(keyword in answer for keyword in i_dont_know_any_language[language])
                 if not unresolved:
                     if artwork_title not in self.solved_questions:
                         self.solved_questions[artwork_title] = {"QA_pairs": []}
                     # Check if the question-answer pair already exists
                     qa_pairs = self.solved_questions[artwork_title]["QA_pairs"]
-                    if not any(normalize_question(pair["question"]) == normalized_question  for pair in qa_pairs):
+                    if not any(normalize_question(pair["question"]) == normalized_question for pair in qa_pairs):
                         self.solved_questions[artwork_title]["QA_pairs"].append({
                             "question": question,
                             "answer": answer_dic['answer']
@@ -167,7 +178,8 @@ class AnswerGenerator:
                         self.unresolved_questions[artwork_title]["unresolved"].append(question)
 
                 self.last_question = question
-                self.last_answer = answer_dic['answer']
+                self.last_answer = answer_dic['answer translated'] if is_english(answer_dic['answer']) and answer_dic['question language'].startswith("English") != True else answer_dic['answer']
+
                 self.save_data()
                 break  # Break the loop if the API call is successful
             except openai.error.OpenAIError as e:
@@ -184,8 +196,93 @@ class AnswerGenerator:
 
 
 def normalize_question(question):
-    # Convert to lowercase
-    question = question.lower()
-    # Remove punctuation
-    question = question.translate(str.maketrans('', '', string.punctuation))
-    return question
+    return question.lower().translate(str.maketrans('', '', string.punctuation))
+
+
+def is_english(text):
+    try:
+        lang = detect(text)
+        return lang == 'en'
+    except:
+        # If langdetect encounters an error (e.g., short input), return False
+        return False
+
+
+def find_lang(text):
+    try:
+        print(text)
+        lang = detect(text)
+        print(lang)
+        if lang.startswith('zh'):
+            lang_name = 'Chinese'
+        else:
+            for language in languages:
+                print(languages[language][0])
+                if languages[language][0].startswith(lang):
+
+                    lang_name = language
+                    return lang_name
+                else:
+                    lang_name = 'English (United States)'
+
+        return lang_name
+    except:
+        # If langdetect encounters an error (e.g., short input), return False
+        return False
+
+
+def extract_json(answer):
+    # Check if the answer contains JSON content
+    if "{" in answer:
+        start_index = answer.index("{")
+        end_index = answer.rindex("}") + 1
+        json_part = answer[start_index:end_index]
+        print('JSON content found:', json_part)
+        try:
+            return json.loads(json_part)
+        except json.JSONDecodeError:
+            print('Invalid JSON content:', json_part)
+            return None
+    else:
+        return None
+
+
+def handle_keyword_responses(answer, question, language):
+    # Check if the answer starts with any predefined keywords
+    for keyword in i_dont_know_any_language:
+        for phrase in i_dont_know_any_language[keyword]:
+            if answer.startswith(phrase):
+                print("No information available for:", answer)
+                q_lan = find_lang(question)
+                print(q_lan)
+                translated_answer = i_dont_know_any_language[q_lan][0] if q_lan else \
+                    i_dont_know_any_language['English (United States)'][0]
+
+                return {
+                    "answer": translated_answer,
+                    "question": question,
+                    "question language": "English (United States)" if is_english(question) else language,
+                    "answer translated": translated_answer
+                }
+    return None
+
+
+def analyze_answer(answer, question, language):
+    # Extract JSON content
+    json_dict = extract_json(answer)
+    if json_dict:
+        return json_dict
+
+    print('Handle keyword-based responses')
+    keyword_response = handle_keyword_responses(answer, question, language)
+    if keyword_response:
+        return keyword_response
+
+    print(' Default case: No JSON content or keyword match')
+    translated_answer = answer if is_english(question) else i_dont_know_any_language.get(language, [answer])[0]
+    return {
+        "answer": answer,
+        "question": question,
+        "question language": "English (United States)" if is_english(question) else language,
+        "answer translated": translated_answer
+    }

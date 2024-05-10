@@ -1,34 +1,114 @@
-let me = {};
-
-let you = {};
-
+const me = {};
+const you = {};
 const micro_div = $("#microphone")
 const micro_icon = $("#micro-icon")
-navigator.mediaDevices.enumerateDevices()
-    .then(function (devices) {
-        const audioDevices = devices.filter(function (device) {
-            return device.kind === "audioinput";
-        });
+const languageDropDown = $("#language-select")
+let languages = {}
+let userLang = navigator.language || navigator.userLanguage;
+let isSupported = false;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
+// const SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
 
-        if (audioDevices.length > 0) {
-            // Microphone is available
-            console.log("Microphone is available");
-            micro_icon.attr("src", micro_icon_path);
-        } else {
-            // Microphone is not available
-            console.log("Microphone is not available");
-            // Set the image source to the inactive microphone image
-            micro_icon.attr("src", no_micro_icon_path);
-            // Display an alert message to the user
-            window.alert("Please activate your microphone or plug in a microphone and refresh this page to use this app.");
-        }
-    })
-    .catch(function (error) {
-        // Error occurred while trying to enumerate devices
-        console.error("Error occurred while trying to enumerate devices:", error);
-    });
+let recognition = new SpeechRecognition();
+let speechRecognitionList = new SpeechGrammarList();
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false;
+let userLanguageName = 'English (United States)';
+window.onload = function () {
+    fetch('../../static/assets/json/languages.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            languages = data;
+            // let userLanguageName;
+            isSupported = Object.keys(languages).some(key => {
+                if (languages[key][0] === userLang) {
+                    userLanguageName = key;
+                    return true;
+                }
+                return false;
+            });
+            console.log(isSupported, userLang);
+            if (isSupported) {
+                console.log('User language is supported:', userLang);
+                recognition.lang = userLang;
+                let flagUrl = languages[userLanguageName][1];
+                let placeholderText = languages[userLanguageName][2];
+                $("#flag-image").attr("src", flagUrl);
+                $(".input_text").attr("placeholder", placeholderText);
+            } else {
+                console.log('User language is not supported:', userLang);
+                recognition.lang = 'English (United States)'; // default language
+            }
 
-function formatAMPM(date) {
+            populateDropdownMenu(languages);
+        })
+        .catch(error => console.error('Error:', error));
+}
+// Create a dropdown menu for language selection
+function populateDropdownMenu(languages) {
+    let defaultOption = $('<option></option>');
+    defaultOption.text("Choose your preferred language");
+    defaultOption.val("");
+    defaultOption.prop("disabled", true);
+    defaultOption.prop("selected", true);
+    languageDropDown.append(defaultOption);
+    for (let language in languages) {
+        let option = $('<option></option>');
+        option.text(language);
+        option.val(languages[language][0]);
+        languageDropDown.append(option);
+    }
+}
+
+// Add the dropdown menu to the page
+$("#flag-image").click(function() {
+    $("#language-select").toggle();
+});
+console.log(languages['English (United States)'])
+// Add an event listener to the dropdown menu
+$("#language-select").change(function() {
+    let selectedLanguage = $(this).val();
+    userLanguageName = $(this).find('option:selected').text();
+
+    let flagUrl = languages[$(this).find('option:selected').text()][1];
+    let placeholderText = languages[$(this).find('option:selected').text()][2];
+    console.log(selectedLanguage);
+    recognition.lang = selectedLanguage;
+    $("#flag-image").attr("src", flagUrl);
+    $(".input_text").attr("placeholder", placeholderText);
+    $("#language-select").toggle();
+});
+const checkMicrophoneAvailability = () => {
+    navigator.mediaDevices.enumerateDevices()
+        .then(function (devices) {
+            const audioDevices = devices.filter(device => device.kind === "audioinput");
+            if (audioDevices.length > 0) {
+                console.log("Microphone is available");
+                if (micro_icon.hasClass('bx-microphone-off')) {
+                    micro_icon.removeClass('bx-microphone-off');
+                    micro_icon.addClass('bx-microphone');
+                    micro_icon.attr('title', 'Click to use your voice');
+                }
+            } else {
+                console.log("Microphone is not available");
+                if (micro_icon.hasClass('bx-microphone')) {
+                    micro_icon.removeClass('bx-microphone');
+                    micro_icon.addClass('bx-microphone-off');
+                    micro_icon.attr('title', 'It looks like your mic is unavailable');
+                }
+                window.alert("Please activate your microphone or plug in a microphone and refresh this page to use this app.");
+            }
+        })
+        .catch(error => console.error("Error occurred while trying to enumerate devices:", error));
+};
+
+const formatAMPM = (date) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let ampm = hours >= 12 ? 'PM' : 'AM';
@@ -40,7 +120,7 @@ function formatAMPM(date) {
 }
 
 //-- No use time. It is a javaScript effect.
-function insertChat(who, text, time) {
+const insertChat = (who, text, time = 0) => {
     if (time === undefined) {
         time = 0;
     }
@@ -72,27 +152,30 @@ function insertChat(who, text, time) {
 
 }
 
-function resetChat() {
+const resetChat = () => {
     $(".chat-ul ul").empty();
 }
 
-
-function goPython(text, p_link) {
-    let token = $('input[name="csrfToken"]').attr('value');
+const goPython = (text, p_link) => {
+    const token = $('input[name="csrfToken"]').attr('value');
+    console.log(userLanguageName, userLang)
     $.ajax({
         type: "POST",
         url: "/handle_chat_question/",
         data: {
             'question': text,
+            'language': userLanguageName,
             'url': p_link.toString(),
-            'csrfmiddlewaretoken': '{{ csrf_token }}'
+            'csrfmiddlewaretoken': token
         }
-    }).done(function (result) {
-        let answer = result['answer'].toString()
+    }).done(result => {
+        const answer = result['answer'].toString();
         insertChat("you", answer, 150);
+    }).fail((jqXHR, textStatus, errorThrown) => {
+        console.error("Request failed: " + textStatus + ", " + errorThrown);
+        window.alert("An error occurred while processing your request. Please try again.");
     });
-}
-
+};
 
 $(".input_text").on("keydown", function (e) {
     if (e.which === 13) {
@@ -101,86 +184,67 @@ $(".input_text").on("keydown", function (e) {
         let text = $(this).val();
         if (text !== "") {
             insertChat("me", text);
-            const answer = goPython($(this).val(), currentUrl)
+            goPython($(this).val(), currentUrl)
             $(this).val('');
         }
     }
 });
 
 
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
-var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
-let recognition = new SpeechRecognition();
-let speechRecognitionList = new SpeechGrammarList();
-recognition.grammars = speechRecognitionList;
-recognition.continuous = false;
-recognition.lang = 'en-US'//'en-US';
-
-function startRecording() {
+const startRecording = () => {
     console.log('start');
     micro_icon.addClass("blink-image");
 
+    const stopStreamAndRecognition = (stream) => {
+        console.log('stop');
+        stream.getTracks().forEach((track) => {
+            track.stop();
+        });
+        recognition.stop();
+        micro_icon.removeClass("blink-image");
+    };
+
+    const handleRecognitionResult = (event) => {
+        const currentUrl = window.location.href;
+        const question = event.results[0][0].transcript + '?';
+        insertChat("me", question);
+        goPython(question, currentUrl);
+    };
+
+    const handleRecognitionError = (event) => {
+        console.error(event.error);
+    };
+
+    const handleMicrophoneError = () => {
+        console.log("Microphone is not available or not active");
+        window.alert("Please activate your microphone or plug in a microphone to use this feature.");
+        micro_icon.attr("src", no_micro_icon_path);
+        micro_icon.removeClass("blink-image");
+    };
+
     navigator.mediaDevices.getUserMedia({audio: true})
-        .then(function (stream) {
-            // Microphone is available and active
+        .then((stream) => {
             console.log("Microphone is available and active");
 
-            // Stop the stream after 5 seconds
-            setTimeout(function () {
-                console.log('stop');
-                stream.getTracks().forEach(function (track) {
-                    track.stop();
-                });
-                recognition.stop();
-                micro_icon.removeClass("blink-image");
-            }, 5000);
+            setTimeout(() => stopStreamAndRecognition(stream), 5000);
 
-            // Start recognition
             recognition.start();
 
-            // Handle recognition results
-            recognition.onresult = function (event) {
-                const currentUrl = window.location.href;
-                const question = event.results[0][0].transcript + '?';
-                insertChat("me", question);
-                const answer = goPython(question, currentUrl)
-            };
-
-            // Handle recognition errors
-            recognition.onerror = function (event) {
-                console.error(event.error);
+            recognition.onresult = handleRecognitionResult;
+            recognition.onerror = handleRecognitionError;
+            recognition.onspeechend = () => {
+                recognition.stop();
+                console.log('stop recognition');
             };
         })
-        .catch(function (error) {
-            // Microphone is not available or not active
-            console.log("Microphone is not available or not active");
-            window.alert("Please activate your microphone or plug in a microphone to use this feature.");
-            // Set the image source to the inactive microphone image
-            micro_icon.attr("src", no_micro_icon_path);
-            micro_icon.removeClass("blink-image");
-        });
-}
+        .catch(handleMicrophoneError);
+};
 
-// document.body.onclick
-micro_div.click(function () {
+micro_icon.click(() => {
     startRecording();
     console.log('Ready to receive a question.');
 });
-
-recognition.onresult = function (event) {
-    const currentUrl = window.location.href;
-    const question = event.results[0][0].transcript + '?';
-    insertChat("me", question);
-    const answer = goPython(question, currentUrl)
-}
-
-recognition.onspeechend = function () {
-    recognition.stop();
-    console.log('stop recognition')
-}
-
 
 $('body > div > div > div:nth-child(2) > span').click(function () {
     $(".input_text").trigger({type: 'keydown', which: 13, keyCode: 13});
@@ -193,4 +257,4 @@ resetChat();
 insertChat("you", "Hi! Nice to meet you!", 0);
 insertChat("you", "Ask me something about this artwork!", 1500);
 
-//-- NOTE: No use time on insertChat.
+checkMicrophoneAvailability();

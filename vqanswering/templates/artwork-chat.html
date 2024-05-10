@@ -22,7 +22,7 @@
           rel="stylesheet">
     <!-- Libraries CSS Files -->
     <link href="{% static 'assets/libraries/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/libraries/icofont/icofont.min.css'%}" rel="stylesheet">
+<!--    <link href="{% static 'assets/libraries/icofont/icofont.min.css'%}" rel="stylesheet">-->
     <link href="{% static 'assets/libraries/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
     <!--    <link href="{% static 'assets/libraries/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">-->
     <!-- Main CSS File -->
@@ -73,8 +73,14 @@
             </div>
             <div class="typing">
                 <input class="input_text" name="question" id="question"
-                       placeholder="Click here and type a question!"/>
-                <div id="microphone"><img id="micro-icon" src="{% static 'assets/img/microphone.png'%}"></div>
+                       placeholder="Click here and type question!"/>
+                <div id="microphone">
+                    <i id="micro-icon" class='bx bx-microphone-off'></i>
+                    <div id="flag_background">
+                        <img id="flag-image" src="https://flagcdn.com/us.svg" alt="flag" title="Click to change language"> <!-- Add this line -->
+                    </div>
+                    <select id="language-select"></select>
+                </div>
             </div>
         </div>
     </div>

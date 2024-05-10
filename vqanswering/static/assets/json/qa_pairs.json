@@ -32,6 +32,94 @@
       {
         "question": "Cosa sto guardando",
         "answer": "Stai guardando 'Kirschenrummel 1920', un'incisione su legno di Axl Leskoschek che rappresenta la rivolta per il caro-prezzi delle ciliegie a Graz."
+      },
+      {
+        "question": "In welcher Sprache ist das?",
+        "answer": "Diese Information ist in Englisch."
+      },
+      {
+        "question": "Welche Oper ist das?",
+        "answer": "Diese Frage steht nicht im Zusammenhang mit dem Kunstwerk."
+      },
+      {
+        "question": "Was wird in diesem Werk dargestellt?",
+        "answer": "Das Werk stellt den 'Kirschenrummel', einen Hungeraufstand in Graz 1920, dar, bei dem Menschen gegen hohe Lebensmittelpreise, insbesondere Kirschen, protestierten."
+      },
+      {
+        "question": "why you answered Deutsch?",
+        "answer": "The previous question was in German, so I responded in German."
+      },
+      {
+        "question": "but i asked What artwork is this?",
+        "answer": "This artwork is a woodcut by Axl Leskoschek titled 'Cherry Rage 1920'."
+      },
+      {
+        "question": "che opera è?",
+        "answer": "È un'incisione su legno di Axl Leskoschek intitolata 'Cherry Rage 1920'."
+      },
+      {
+        "question": "¿Que hay en el cuadro??",
+        "answer": "El cuadro muestra personas de diferentes clases sociales unidas en protesta contra los altos precios de los alimentos, especialmente las cerezas, durante un disturbio en Graz en 1920."
+      },
+      {
+        "question": "¿Qué estás en el cuadro??",
+        "answer": "El cuadro muestra personas de diferentes clases sociales unidas en protesta contra los altos precios de los alimentos, especialmente las cerezas, durante un disturbio en Graz en 1920."
+      },
+      {
+        "question": "what i'm looking at?",
+        "answer": "You're looking at 'Cherry Rage 1920', a woodcut by Axl Leskoschek depicting the hunger riot in Graz, emphasizing social conflict and inequality."
+      },
+      {
+        "question": "我可以看到什么？?",
+        "answer": "你可以看到一幅名为“Cherry Rage 1920”的木刻作品，描绘了1920年格拉茨饥饿暴动的场景。"
+      },
+      {
+        "question": "马和谁说话？",
+        "answer": "I don't have this information."
+      },
+      {
+        "question": "画中发生了什么?",
+        "answer": "画描述了在1920年格拉兹的“樱桃愤怒”报义，人们因食物缺乏和高价而抗议。"
+      },
+      {
+        "question": "what is there?",
+        "answer": "我没有这个信息"
+      },
+      {
+        "question": "what we can see in the picture?",
+        "answer": "我没有这个信息"
+      },
+      {
+        "question": "why dog is barking?",
+        "answer": "我没有这个信息"
+      },
+      {
+        "question": "为什么狗在叫？",
+        "answer": "I don't have this information."
+      },
+      {
+        "question": "Was wir in diesen Berg das Gäste.?",
+        "answer": "I don't have this information"
+      },
+      {
+        "question": "Das wird in diesem Werk dargestellt.?",
+        "answer": "Der 'Kirschenrummel' zeigt Menschen verschiedener Gesellschaftsschichten, die gemeinsam gegen die Obrigkeit aufstehen, insbesondere gegen hohe Lebensmittelpreise und soziale Ungleichheit."
+      },
+      {
+        "question": ")",
+        "answer": "I don't have this information."
+      },
+      {
+        "question": "what is that?",
+        "answer": "I don't have this information"
+      },
+      {
+        "question": "why the riot?",
+        "answer": "The riot, known as 'Cherry Rage', was triggered by high food prices, particularly cherries, amid post-WW1 hardship, leading to protests for affordable food."
+      },
+      {
+        "question": "perchè il cane?",
+        "answer": "I don't have this information"
       }
     ]
   },
@@ -48,6 +136,30 @@
       {
         "question": "Perchè sono vestiti così?",
         "answer": "Sono vestiti in modo formale per la foto, rappresentando il loro ruolo di dirigenti della miniera."
+      }
+    ]
+  },
+  "Calco Testa Palagi": {
+    "QA_pairs": [
+      {
+        "question": "Model.?",
+        "answer": "The model is a cast of a female head from Roman marble, probably Augustan, part of the Palagi Collection."
+      },
+      {
+        "question": "Cosa sto guardando??",
+        "answer": "Stai guardando un calco che riproduce una testa femminile in marmo romano, parte della Collezione Palagi del Museo Civico Archeologico di Bologna."
+      }
+    ]
+  },
+  "Calco del gruppo dei Tirannicidi": {
+    "QA_pairs": [
+      {
+        "question": "Co se dívám?",
+        "answer": "Díváte se na calco skupiny Tirannicidi, zobrazující řecké hrdiny Armodia a Aristogitona."
+      },
+      {
+        "question": "Koho jste dívám??",
+        "answer": "Díváte se na calco skupiny Tirannicidi, zobrazující řecké hrdiny Armodia a Aristogitona."
       }
     ]
   }

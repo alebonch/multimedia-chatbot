@@ -100,17 +100,14 @@ class Artworkchat(View):
 def handle_chat_question(request):
     url = request.POST.get("url")
     question = request.POST.get("question")
-
+    language = request.POST.get("language")
     if not url or not question:
         return JsonResponse({'answer': 'Invalid request'})
 
     address_link = url.rsplit('gallery/')[1][:-1]
     decoded_link = urllib.parse.unquote(address_link)
-    # title = address_title.replace('_', ' ') .replace('-', ' ').replace('%E2%80%93', '–')
     artwork = Artwork.objects.filter(link__iexact=decoded_link).first()
     print("in handle chat", decoded_link)
-    # print(title)
-    # artwork = Artwork.objects.filter(title__iexact=title).first()
 
     if artwork is None:
         return JsonResponse({'answer': 'Artwork not found'})
@@ -118,7 +115,7 @@ def handle_chat_question(request):
     context = artwork.description
     title = artwork.title
     print(title)
-    answer = AnswerGenerator().produce_answer(question, title, context)
+    answer = AnswerGenerator().produce_answer(question, language, title, context)
 
     return JsonResponse({'answer': answer})
 
@@ -245,6 +242,8 @@ def find_year_century_from_period(time_period):
                     new_time_period = f"{start_year} - {end_year} CE"
     print("new_time_period", new_time_period, year, century)
     return new_time_period, year, century
+
+
 def check_url(url):
     try:
         response = requests.head(url)

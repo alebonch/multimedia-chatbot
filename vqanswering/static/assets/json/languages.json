@@ -1,0 +1,487 @@
+{
+    "Afrikaans": [
+        "af-ZA",
+        "https://flagcdn.com/za.svg",
+        "Klik hier en tik vraag!"
+    ],
+    "Amharic": [
+        "am-ET",
+        "https://flagcdn.com/et.svg",
+        "እዚህ እናሳውቃለን እና ፍልስፍና ይግባኝ!"
+    ],
+    "Armenian": [
+        "hy-AM",
+        "https://flagcdn.com/am.svg",
+        "Կտտացրեք այստեղ և գրեք հարցը!"
+    ],
+    "Azerbaijani": [
+        "az-AZ",
+        "https://flagcdn.com/az.svg",
+        "Buraya basın və sual yazın!"
+    ],
+    "Bangla (Bangladesh)": [
+        "bn-BD",
+        "https://flagcdn.com/bd.svg",
+        "এখানে ক্লিক করুন এবং প্রশ্ন টাইপ করুন!"
+    ],
+    "Bangla (India)": [
+        "bn-IN",
+        "https://flagcdn.com/in.svg",
+        "এখানে ক্লিক করুন এবং প্রশ্ন টাইপ করুন!"
+    ],
+    "Basque": [
+        "eu-ES",
+        "https://flagcdn.com/es.svg",
+        "Hemen klik egin eta galdera idatzi!"
+    ],
+    "Bulgarian": [
+        "bg-BG",
+        "https://flagcdn.com/bg.svg",
+        "Кликнете тук и въведете въпрос!"
+    ],
+    "Catalan": [
+        "ca-ES",
+        "https://flagcdn.com/es.svg",
+        "Feu clic aquí i escriviu una pregunta!"
+    ],
+    "Chinese": [
+        "cmn-Hans-CN",
+        "https://flagcdn.com/cn.svg",
+        "点击这里输入问题！"
+    ],
+    "Chinese (Hong Kong)": [
+        "cmn-Hans-HK",
+        "https://flagcdn.com/hk.svg",
+        "點擊這裡輸入問題！"
+    ],
+    "Chinese (Taiwan)": [
+        "cmn-Hant-TW",
+        "https://flagcdn.com/tw.svg",
+        "點擊這裡輸入問題！"
+    ],
+    "Chinese (Yue)": [
+        "yue-Hant-HK",
+        "https://flagcdn.com/hk.svg",
+        "點擊這裡輸入問題！"
+    ],
+    "Croatian": [
+        "hr-HR",
+        "https://flagcdn.com/hr.svg",
+        "Kliknite ovdje i upišite pitanje!"
+    ],
+    "Czech": [
+        "cs-CZ",
+        "https://flagcdn.com/cz.svg",
+        "Klikněte zde a napište otázku!"
+    ],
+    "Danish": [
+        "da-DK",
+        "https://flagcdn.com/dk.svg",
+        "Klik her og skriv et spørgsmål!"
+    ],
+    "Dutch": [
+        "nl-NL",
+        "https://flagcdn.com/nl.svg",
+        "Klik hier en typ een vraag!"
+    ],
+    "English (Australia)": [
+        "en-AU",
+        "https://flagcdn.com/au.svg",
+        "Click here and type question!"
+    ],
+    "English (Canada)": [
+        "en-CA",
+        "https://flagcdn.com/ca.svg",
+        "Click here and type question!"
+    ],
+    "English (Ghana)": [
+        "en-GH",
+        "https://flagcdn.com/gh.svg",
+        "Click here and type question!"
+    ],
+    "English (India)": [
+        "en-IN",
+        "https://flagcdn.com/in.svg",
+        "Click here and type question!"
+    ],
+    "English (Kenya)": [
+        "en-KE",
+        "https://flagcdn.com/ke.svg",
+        "Click here and type question!"
+    ],
+    "English (New Zealand)": [
+        "en-NZ",
+        "https://flagcdn.com/nz.svg",
+        "Click here and type question!"
+    ],
+    "English (Nigeria)": [
+        "en-NG",
+        "https://flagcdn.com/ng.svg",
+        "Click here and type question!"
+    ],
+    "English (Philippines)": [
+        "en-PH",
+        "https://flagcdn.com/ph.svg",
+        "Click here and type question!"
+    ],
+    "English (Tanzania)": [
+        "en-TZ",
+        "https://flagcdn.com/tz.svg",
+        "Click here and type question!"
+    ],
+    "English (United Kingdom)": [
+        "en-GB",
+        "https://flagcdn.com/gb.svg",
+        "Click here and type question!"
+    ],
+    "English (United States)": [
+        "en-US",
+        "https://flagcdn.com/us.svg",
+        "Click here and type question!"
+    ],
+    "Filipino": [
+        "fil-PH",
+        "https://flagcdn.com/ph.svg",
+        "Mag-click dito at mag-type ng tanong!"
+    ],
+    "French": [
+        "fr-FR",
+        "https://flagcdn.com/fr.svg",
+        "Cliquez ici et tapez une question!"
+    ],
+    "Galician": [
+        "gl-ES",
+        "https://flagcdn.com/es.svg",
+        "Prema aquí e escriba unha pregunta!"
+    ],
+    "Georgian": [
+        "ka-GE",
+        "https://flagcdn.com/ge.svg",
+        "აქ დააჭირეთ და ჩაწერეთ კითხვა!"
+    ],
+    "German": [
+        "de-DE",
+        "https://flagcdn.com/de.svg",
+        "Klicken Sie hier und geben Sie eine Frage ein!"
+    ],
+    "Greek": [
+        "el-GR",
+        "https://flagcdn.com/gr.svg",
+        "Κάντε κλικ εδώ και πληκτρολογήστε μια ερώτηση!"
+    ],
+    "Gujarati": [
+        "gu-IN",
+        "https://flagcdn.com/in.svg",
+        "અહીં ક્લિક કરો અને પ્રશ્ન લખો!"
+    ],
+    "Hindi": [
+        "hi-IN",
+        "https://flagcdn.com/in.svg",
+        "यहां क्लिक करें और सवाल टाइप करें!"
+    ],
+    "Hungarian": [
+        "hu-HU",
+        "https://flagcdn.com/hu.svg",
+        "Kattintson ide, és írjon be egy kérdést!"
+    ],
+    "Icelandic": [
+        "is-IS",
+        "https://flagcdn.com/is.svg",
+        "Smellið hér og skrifaðu spurninguna!"
+    ],
+    "Indonesian": [
+        "id-ID",
+        "https://flagcdn.com/id.svg",
+        "Klik di sini dan ketik pertanyaan!"
+    ],
+    "Italian": [
+        "it-IT",
+        "https://flagcdn.com/it.svg",
+        "Clicca qui e scrivi una domanda!"
+    ],
+    "Japanese": [
+        "ja-JP",
+        "https://flagcdn.com/jp.svg",
+        "ここをクリックして質問を入力してください！"
+    ],
+    "Javanese": [
+        "jv-ID",
+        "https://flagcdn.com/id.svg",
+        "Klik kene lan ketik pitakon!"
+    ],
+    "Kannada": [
+        "kn-IN",
+        "https://flagcdn.com/in.svg",
+        "ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಪ್ರಶ್ನೆ ಬರೆಯಿರಿ!"
+    ],
+    "Khmer": [
+        "km-KH",
+        "https://flagcdn.com/kh.svg",
+        "ចុច​ទី​នេះ​ និង​សរសេរ​សំណួរ!"
+    ],
+    "Korean": [
+        "ko-KR",
+        "https://flagcdn.com/kr.svg",
+        "여기를 클릭하고 질문을 입력하세요!"
+    ],
+    "Lao": [
+        "lo-LA",
+        "https://flagcdn.com/la.svg",
+        "ຄລິກຢູ່ນີ້ ແລະໃສ່ຄຳຖາມດ້ວຍ!"
+    ],
+    "Latvian": [
+        "lv-LV",
+        "https://flagcdn.com/lv.svg",
+        "Noklikšķiniet šeit un ierakstiet jautājumu!"
+    ],
+    "Lithuanian": [
+        "lt-LT",
+        "https://flagcdn.com/lt.svg",
+        "Spustelėkite čia ir įveskite klausimą!"
+    ],
+    "Malay": [
+        "ms-MY",
+        "https://flagcdn.com/my.svg",
+        "Klik di sini dan taip soalan!"
+    ],
+    "Malayalam": [
+        "ml-IN",
+        "https://flagcdn.com/in.svg",
+        "ഇവിടെ ക്ലിക്ക് ചെയ്യുക മറ്റ് ചോദ്യം ടൈപ്പ് ചെയ്യുക!"
+    ],
+    "Marathi": [
+        "mr-IN",
+        "https://flagcdn.com/in.svg",
+        "इथे क्लिक करा आणि प्रश्न टाइप करा!"
+    ],
+    "Nepali": [
+        "ne-NP",
+        "https://flagcdn.com/np.svg",
+        "यहाँ क्लिक गर्नुहोस् र प्रश्न टाइप गर्नुहोस्!"
+    ],
+    "Norwegian Bokmål": [
+        "nb-NO",
+        "https://flagcdn.com/no.svg",
+        "Klikk her og skriv inn et spørsmål!"
+    ],
+    "Polish": [
+        "pl-PL",
+        "https://flagcdn.com/pl.svg",
+        "Kliknij tutaj i wpisz pytanie!"
+    ],
+    "Portuguese (Brazil)": [
+        "pt-BR",
+        "https://flagcdn.com/br.svg",
+        "Clique aqui e digite uma pergunta!"
+    ],
+    "Portuguese (Portugal)": [
+        "pt-PT",
+        "https://flagcdn.com/pt.svg",
+        "Clique aqui e escreva uma pergunta!"
+    ],
+    "Romanian": [
+        "ro-RO",
+        "https://flagcdn.com/ro.svg",
+        "Faceți clic aici și tastați o întrebare!"
+    ],
+    "Russian": [
+        "ru-RU",
+        "https://flagcdn.com/ru.svg",
+        "Нажмите здесь и введите вопрос!"
+    ],
+    "Serbian": [
+        "sr-RS",
+        "https://flagcdn.com/rs.svg",
+        "Кликните овде и унесите питање!"
+    ],
+    "Sinhala": [
+        "si-LK",
+        "https://flagcdn.com/lk.svg",
+        "මෙතන ක්ලික් කරන්න සහ ප්‍රශ්නය ටයිප් කරන්න!"
+    ],
+    "Slovak": [
+        "sk-SK",
+        "https://flagcdn.com/sk.svg",
+        "Kliknite sem a napíšte otázku!"
+    ],
+    "Slovenian": [
+        "sl-SI",
+        "https://flagcdn.com/si.svg",
+        "Kliknite tukaj in vnesite vprašanje!"
+    ],
+    "Spanish (Argentina)": [
+        "es-AR",
+        "https://flagcdn.com/ar.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Bolivia)": [
+        "es-BO",
+        "https://flagcdn.com/bo.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Chile)": [
+        "es-CL",
+        "https://flagcdn.com/cl.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Colombia)": [
+        "es-CO",
+        "https://flagcdn.com/co.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Costa Rica)": [
+        "es-CR",
+        "https://flagcdn.com/cr.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Dominican Republic)": [
+        "es-DO",
+        "https://flagcdn.com/do.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Ecuador)": [
+        "es-EC",
+        "https://flagcdn.com/ec.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (El Salvador)": [
+        "es-SV",
+        "https://flagcdn.com/sv.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Guatemala)": [
+        "es-GT",
+        "https://flagcdn.com/gt.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Honduras)": [
+        "es-HN",
+        "https://flagcdn.com/hn.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Mexico)": [
+        "es-MX",
+        "https://flagcdn.com/mx.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Nicaragua)": [
+        "es-NI",
+        "https://flagcdn.com/ni.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Panama)": [
+        "es-PA",
+        "https://flagcdn.com/pa.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Paraguay)": [
+        "es-PY",
+        "https://flagcdn.com/py.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Peru)": [
+        "es-PE",
+        "https://flagcdn.com/pe.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Puerto Rico)": [
+        "es-PR",
+        "https://flagcdn.com/pr.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Spain)": [
+        "es-ES",
+        "https://flagcdn.com/es.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (United States)": [
+        "es-US",
+        "https://flagcdn.com/us.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Uruguay)": [
+        "es-UY",
+        "https://flagcdn.com/uy.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Spanish (Venezuela)": [
+        "es-VE",
+        "https://flagcdn.com/ve.svg",
+        "¡Haga clic aquí y escriba una pregunta!"
+    ],
+    "Sundanese": [
+        "su-ID",
+        "https://flagcdn.com/id.svg",
+        "Klik kene lan ketik pitakon!"
+    ],
+    "Swahili": [
+        "sw-TZ",
+        "https://flagcdn.com/tz.svg",
+        "Bonyeza hapa na andika swali!"
+    ],
+    "Swahili (Kenya)": [
+        "sw-KE",
+        "https://flagcdn.com/ke.svg",
+        "Bonyeza hapa na andika swali!"
+    ],
+    "Tamil": [
+        "ta-IN",
+        "https://flagcdn.com/in.svg",
+        "இங்கே கிளிக் செய்யவும் மற்றும் கேள்வி டைப் செய்யவும்!"
+    ],
+    "Tamil (Malaysia)": [
+        "ta-MY",
+        "https://flagcdn.com/my.svg",
+        "இங்கே கிளிக் செய்யவும் மற்றும் கேள்வி டைப் செய்யவும்!"
+    ],
+    "Tamil (Singapore)": [
+        "ta-SG",
+        "https://flagcdn.com/sg.svg",
+        "இங்கே கிளிக் செய்யவும் மற்றும் கேள்வி டைப் செய்யவும்!"
+    ],
+    "Tamil (Sri Lanka)": [
+        "ta-LK",
+        "https://flagcdn.com/lk.svg",
+        "இங்கே கிளிக் செய்யவும் மற்றும் கேள்வி டைப் செய்யவும்!"
+    ],
+    "Telugu": [
+        "te-IN",
+        "https://flagcdn.com/in.svg",
+        "ఇక్కడ క్లిక్ చేయండి మరియు ప్రశ్న టైప్ చేయండి!"
+    ],
+    "Thai": [
+        "th-TH",
+        "https://flagcdn.com/th.svg",
+        "คลิกที่นี่และพิมพ์คำถาม!"
+    ],
+    "Turkish": [
+        "tr-TR",
+        "https://flagcdn.com/tr.svg",
+        "Buraya tıklayın ve bir soru yazın!"
+    ],
+    "Ukrainian": [
+        "uk-UA",
+        "https://flagcdn.com/ua.svg",
+        "Натисніть тут і введіть питання!"
+    ],
+    "Urdu": [
+        "ur-PK",
+        "https://flagcdn.com/pk.svg",
+        "یہاں کلک کریں اور سوال ٹائپ کریں!"
+    ],
+    "Urdu (India)": [
+        "ur-IN",
+        "https://flagcdn.com/in.svg",
+        "یہاں کلک کریں اور سوال ٹائپ کریں!"
+    ],
+    "Vietnamese": [
+        "vi-VN",
+        "https://flagcdn.com/vn.svg",
+        "Nhấp vào đây và gõ câu hỏi!"
+    ],
+    "Zulu": [
+        "zu-ZA",
+        "https://flagcdn.com/za.svg",
+        "Cisha lapha ufake iqiniso!"
+    ]
+}

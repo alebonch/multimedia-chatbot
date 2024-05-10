@@ -4,13 +4,44 @@
       "chi è il personaggio in basso a destra?",
       "Chi sono le persone sulla destra del dipinto?",
       "chi non è l'autore?",
-      "chi è il cavallo?"
+      "chi è il cavallo?",
+      "Welche Oper ist das?",
+      "cosa dice il cavallo?",
+      "请描述一下这张饼。?",
+      "请描述一下这张图片。?",
+      "describe what is inside this picture?",
+      "What i can see in this artwork?",
+      "why dog is barking?",
+      "为什么狗在叫？",
+      "Zergatik aza da garratza?",
+      "为什么狗在叫",
+      "为什么为什么狗在叫？狗在叫？",
+      "Was wir in diesen Berg das Gäste.?",
+      "Ich habe diese Information nicht."
     ]
   },
   "Ingresso Galleria XXII": {
     "unresolved": [
       "Come sono abbigliati?",
       "Che abbigliamento indossano?"
+    ]
+  },
+  "Calco Testa Palagi": {
+    "unresolved": [
+      "http://localhost:8000/static/assets/img/microphone.png",
+      "Christoffer Johansen.?"
+    ]
+  },
+  "Calco del gruppo dei Tirannicidi": {
+    "unresolved": [
+      "Al con, al contest.?",
+      "Goes a Crystal Kennedy ownership.?",
+      "What??",
+      "¿Qué tal??",
+      "What I'm looking at.?",
+      "walang loob kina?",
+      "Twitter.?",
+      "Voda i mi u kinet.?"
     ]
   }
 }

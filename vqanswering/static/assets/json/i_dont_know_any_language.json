@@ -1,0 +1,682 @@
+{
+    "Afrikaans": [
+        "Ek het nie hierdie inligting nie",
+        "Die konteks verskaf geen",
+        "Die verskafte konteks verskaf nie",
+        "nie gespesifiseer in die verskafte",
+        "daar is geen inligting nie"
+    ],
+    "Amharic": [
+        "እኔ ይህን መረጃ አይቻልም",
+        "ምንድን እንደሚመረጡ ተመልከቱ",
+        "በማስተዋወቅ የተመረጡ ማስተዋወቅ አለበት",
+        "ከተመረጡ በፊት አልተመረጡ",
+        "እያንዳንዱ መረጃ የለም"
+    ],
+    "Armenian": [
+        "Այս տեղեկությունն ունեմ",
+        "համախառնայինությունը չի տա",
+        "տրված համախառնողը չի",
+        "նշվածը չի տրվել",
+        "մուտքագրված չէ"
+        ],
+    "Azerbaijani": [
+        "Mən bu məlumatlara malik deyiləm",
+        "Məzmun heç bir şey təmin etmir",
+        "Təmin edilən məzmun təmin etmir",
+        "təyin edilməyib təmin edilən",
+        "məlumat yoxdur"
+    ],
+    "Bangla (Bangladesh)": [
+        "আমার এই তথ্য নেই",
+        "প্রস্তুত কন্টেক্সট কোনও তথ্য সরবরাহ করে না",
+        "প্রদত্ত প্রস্তুত কন্টেক্সট সরবরাহ করে না",
+        "প্রদত্ত নির্দিষ্ট না",
+        "তথ্য নেই"
+    ],
+    "Bangla (India)": [
+        "আমার এই তথ্য নেই",
+        "প্রস্তুত কন্টেক্সট কোনও তথ্য সরবরাহ করে না",
+        "প্রদত্ত প্রস্তুত কন্টেক্সট সরবরাহ করে না",
+        "প্রদত্ত নির্দিষ্ট না",
+        "তথ্য নেই"
+    ],
+    "Basque": [
+        "Ez daukat informazio hori",
+        "Testuinguruak ez du ematen",
+        "Emandako testuingurua ez dauka",
+        "testuinguruan zehaztuta ez dago",
+        "ez dago informaziorik"
+    ],
+    "Bulgarian": [
+        "Нямам тази информация",
+        "Контекстът не предоставя никаква",
+        "Предоставеният контекст не",
+        "не е посочено в предоставения",
+        "няма информация"
+    ],
+    "Catalan": [
+        "No tinc aquesta informació",
+        "El context no proporciona res",
+        "El context proporcionat no",
+        "no especificat en el proporcionat",
+        "no hi ha informació"
+    ],
+    "Chinese": [
+        "我没有这个信息",
+        "上下文没有提供任何",
+        "所提供的上下文",
+        "在提供的中未指定",
+        "没有信息"
+    ],
+    "Chinese (Hong Kong)": [
+        "我沒有這個資訊",
+        "上下文沒有提供任何",
+        "所提供的上下文",
+        "在提供的中未指定",
+        "沒有資訊"
+    ],
+    "Chinese (Taiwan)": [
+        "我沒有這個資訊",
+        "上下文沒有提供任何",
+        "所提供的上下文",
+        "在提供的中未指定",
+        "沒有資訊"
+    ],
+    "Chinese (Yue)": [
+        "我冇呢個資料",
+        "上下文冇提供任何",
+        "提供嘅上下文",
+        "冇俾明喺提供嘅度",
+        "無資料"
+    ],
+    "Croatian": [
+        "Nemam tu informaciju",
+        "Kontekst ne pruža ništa",
+        "Dostavljeni kontekst ne",
+        "nije navedeno u datom",
+        "nema informacija"
+    ],
+    "Czech": [
+        "Nemám tyto informace",
+        "Kontext neobsahuje nic",
+        "Poskytnutý kontext nedává",
+        "neupřesněno v poskytnutém",
+        "není žádná informace"
+    ],
+    "Danish": [
+        "Jeg har ikke disse oplysninger",
+        "Konteksten giver ikke noget",
+        "Den angivne kontekst giver ikke",
+        "ikke specificeret i den angivne",
+        "der er ingen information"
+    ],
+    "Dutch": [
+        "Ik heb deze informatie niet",
+        "De context geeft niets",
+        "De gegeven context geeft niet",
+        "niet gespecificeerd in de gegeven",
+        "er is geen informatie"
+    ],
+    "English (Australia)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Canada)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Ghana)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (India)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Kenya)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (New Zealand)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Nigeria)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Philippines)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (Tanzania)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (United Kingdom)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "English (United States)": [
+        "I don't have this information",
+        "The context does not provide any",
+        "The context provided does not",
+        "not specified in the provided",
+        "there is no information"
+    ],
+    "Filipino": [
+        "Wala akong impormasyong ito",
+        "Ang konteksto ay hindi nagbibigay ng anumang",
+        "Ang ibinigay na konteksto ay hindi",
+        "hindi tinukoy sa ibinigay na",
+        "walang impormasyon"
+    ],
+    "French": [
+        "Je n'ai pas cette information",
+        "Le contexte ne fournit rien",
+        "Le contexte fourni ne",
+        "non spécifié dans le",
+        "il n'y a pas d'informations"
+    ],
+    "Galician": [
+        "Non teño esta información",
+        "O contexto non proporciona nada",
+        "O contexto proporcionado non",
+        "non especificado no fornecido",
+        "non hai información"
+    ],
+    "Georgian": [
+        "ამ ინფორმაცია არ მაქვს",
+        "კონტექსტი არ გთავაზობს არაფერს ",
+        "მოცემული კონტექსტი",
+        "არ მოცემულ არაფერში განსაზღვრულია",
+        "ინფორმაცია არ არსებობს"
+    ],
+    "German": [
+        "Ich habe diese Informationen nicht",
+        "Ich habe diese Information nicht",
+        "Der Kontext liefert keine",
+        "Der bereitgestellte Kontext liefert nicht",
+        "nicht im bereitgestellten spezifiziert",
+        "es gibt keine Informationen"
+    ],
+    "Greek": [
+        "Δεν έχω αυτήν την πληροφορία",
+        "Η συγκεκριμένη συγκυρία δεν παρέχει καμία",
+        "Ο παρεχόμενος πλαίσιο",
+        "δεν έχει καθοριστεί στο",
+        "δεν υπάρχουν πληροφορίες"
+    ],
+    "Gujarati": [
+        "મારી પાસે આ માહિતી નથી",
+        "સંદર્ભ કોઈ પણ આપતું નથી",
+        "આપેલું સંદર્ભ નથી",
+        "પ્રદાન કરેલાં નથી",
+        "માહિતી નથી"
+    ],
+    "Hindi": [
+        "मेरे पास यह जानकारी नहीं है",
+        "संदर्भ कोई जानकारी प्रदान नहीं करता",
+        "प्रदान किया गया संदर्भ नहीं करता",
+        "प्रदान किये गए में निर्दिष्ट नहीं",
+        "कोई जानकारी नहीं है"
+    ],
+    "Hungarian": [
+        "Nincs meg ez az információ",
+        "A kontextus nem szolgáltat semmit",
+        "A szolgáltatott kontextus",
+        "Nem lett megadva a szolgáltatottban",
+        "Nincs információ"
+    ],
+    "Icelandic": [
+        "Ég hef ekki þessa upplýsingar",
+        "Samhengið veitir ekki neitt",
+        "Samhengið sem gefið er ekki",
+        "ekkert tilgreint í gefnu",
+        "það er engin upplýsingar"
+    ],
+    "Indonesian": [
+        "Saya tidak memiliki informasi ini",
+        "Konteks tidak memberikan apa pun",
+        "Konteks yang diberikan tidak",
+        "tidak ditentukan dalam yang diberikan",
+        "tidak ada informasi"
+    ],
+    "Italian": [
+        "Non ho queste informazioni",
+        "Il contesto non fornisce nulla",
+        "Il contesto fornito non",
+        "non specificato nel",
+        "non ci sono informazioni"
+    ],
+    "Japanese": [
+        "この情報は持っていません",
+        "コンテキストに何もありません",
+        "提供されたコンテキストに",
+        "指定されていません",
+        "情報はありません"
+    ],
+    "Javanese": [
+        "Aku ora duwe informasi iki",
+        "Kontèks ora nyedhiyakake apa pun",
+        "Kontèks sing dideleng ora",
+        "ora ditukuaké ing tèks",
+        "ora ana informasi"
+    ],
+    "Kannada": [
+        "ಈ ಮಾಹಿತಿಯನ್ನು ನನಗೆ ಇಲ್ಲ",
+        "ಸಂದರ್ಭ ಯಾವುದನ್ನೂ ಒದಗಿಸುವುದಿಲ್ಲ",
+        "ಕೊಟ್ಟಿದ್ದ ಸಂದರ್ಭವನ್ನು ಕೊಡಲಿಲ್ಲ",
+        "ಕೊಂಡಿಗೆ ನೀಡಲಾಗಿಲ್ಲ",
+        "ಇಲ್ಲಿ ಯಾವುದೇ ಮಾಹಿತಿಯಿಲ್ಲ"
+    ],
+    "Khmer": [
+        "ខ្ញុំមិនមានព័ត៌មាននេះទេ",
+        "ប្រមាណបន្ថែមមិនផ្ដល់អ្វីទេ",
+        "ប្រវត្តិនេះដែលបានផ្ដល់មិនមាន",
+        "មិនបានបង្ហាញក្នុងតំបន់ដែលផ្ដល់បាន",
+        "គ្មានព័ត៌មានទេ"
+    ],
+    "Korean": [
+        "나는이 정보를 갖고 있지 않습니다",
+        "맥락은 아무 것도 제공하지 않습니다",
+        "제공된 맥락에는",
+        "지정되지 않았습니다",
+        "정보가 없습니다"
+    ],
+    "Lao": [
+        "ຂ້ອຍບໍ່ມີຂໍ້ມູນນີ້",
+        "ຂໍ້ມູນທີ່ສະເພາະບໍ່ຈະມີມາກລົງ",
+        "ທີ່ສະເພາະທີ່ສະເພາະມາກລົງ",
+        "ບໍ່ພວກເຮັດໃນທີ່ສະເພາະ",
+        "ບໍ່ມີຂໍ້ມູນ"
+    ],
+    "Latvian": [
+        "Man nav šīs informācijas",
+        "Konteksts nedod neko",
+        "Nodrošinātais konteksts",
+        "nav norādīts dotajā",
+        "nav informācijas"
+    ],
+    "Lithuanian": [
+        "Neturiu šios informacijos",
+        "Kontekstas nieko nepateikia",
+        "Pateiktas kontekstas",
+        "nenurodytas pateiktame",
+        "nėra informacijos"
+    ],
+    "Malay": [
+        "Saya tidak mempunyai maklumat ini",
+        "Konteks tidak menyediakan apa-apa",
+        "Konteks yang diberikan tidak",
+        "tidak ditetapkan dalam yang diberikan",
+        "tiada maklumat"
+    ],
+    "Malayalam": [
+        "എനിക്ക് ഈ വിവരങ്ങൾ ലഭ്യമല്ല",
+        "സംശയം പ്രദാനം ചെയ്യുന്നതിലേക്ക്",
+        "നൽകിയ സംശയം",
+        "അവസ്ഥിതിയിലേക്ക് നൽകിയതില്ല",
+        "വിവരങ്ങൾ ഇല്ല"
+    ],
+    "Marathi": [
+        "मला हे माहिती नाही",
+        "संदर्भ काहीही प्रदान करत नाही",
+        "प्रदान केलेला संदर्भ",
+        "प्रदान केल्या गेल्या",
+        "माहिती नाही"
+    ],
+    "Nepali": [
+        "म यस जानकारी छैन",
+        "सन्दर्भ कुनै कुरा प्रदान गर्दैन",
+        "दिइएको सन्दर्भले कुनै",
+        "निर्दिष्ट गरिएको छैन",
+        "कुनै जानकारी छैन"
+    ],
+    "Norwegian Bokmål": [
+        "Jeg har ikke denne informasjonen",
+        "Konteksten gir ingenting",
+        "Den angitte konteksten gir ikke",
+        "ikke spesifisert i den angitte",
+        "det er ingen informasjon"
+    ],
+    "Polish": [
+        "Nie mam tych informacji",
+        "Kontekst nic nie dostarcza",
+        "Dostarczony kontekst nie",
+        "nie określony w dostarczonym",
+        "nie ma informacji"
+    ],
+    "Portuguese (Brazil)": [
+        "Eu não tenho essas informações",
+        "O contexto não fornece nada",
+        "O contexto fornecido não",
+        "não especificado no fornecido",
+        "não há informações"
+    ],
+    "Portuguese (Portugal)": [
+        "Não tenho esta informação",
+        "O contexto não fornece nada",
+        "O contexto fornecido não",
+        "não especificado no fornecido",
+        "não há informação"
+    ],
+    "Romanian": [
+        "Nu am această informație",
+        "Contextul nu oferă nimic",
+        "Contextul furnizat nu",
+        "nu este specificat în furnizat",
+        "nu există informații"
+    ],
+    "Russian": [
+        "У меня нет этой информации",
+        "Контекст не предоставляет ничего",
+        "Предоставленный контекст не",
+        "не указано в предоставленном",
+        "нет информации"
+    ],
+    "Serbian": [
+        "Немам ове информације",
+        "Контекст не даје ништа",
+        "Дати контекст не",
+        "није наведено у датом",
+        "нема информација"
+    ],
+    "Sinhala": [
+        "මට මෙම තොරතුරු නොමැත",
+        "සන්දර්භය කිසිම දෙයක්ද නොදන්නේ",
+        "ලබාදීමේ සන්දර්භය",
+        "ලබන ලද",
+        "තොරතුරු නොමැත"
+    ],
+    "Slovak": [
+        "Nemám tieto informácie",
+        "Kontext nič nedáva",
+        "Poskytnutý kontext nedáva",
+        "nešpecifikovaný v poskytnutom",
+        "nie sú žiadne informácie"
+    ],
+    "Slovenian": [
+        "Te informacije nimam",
+        "Kontekst ne daje ničesar",
+        "Podan kontekst ne",
+        "ni določeno v podanem",
+        "ni informacij"
+    ],
+    "Spanish (Argentina)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Bolivia)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Chile)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Colombia)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Costa Rica)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Dominican Republic)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Ecuador)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (El Salvador)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Guatemala)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Honduras)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Mexico)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Nicaragua)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Panama)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Paraguay)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Peru)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Puerto Rico)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Spain)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (United States)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Uruguay)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Spanish (Venezuela)": [
+        "No tengo esta información",
+        "El contexto no proporciona nada",
+        "El contexto proporcionado no",
+        "no especificado en el proporcionado",
+        "no hay información"
+    ],
+    "Sundanese": [
+        "Abdi henteu mibanda informasi ieu",
+        "Konteks henteu nyadiakeun naon wae",
+        "Kontékstual anu disadiakeun henteu",
+        "teu ditangtoskeun dina disadiakeun",
+        "teu aya informasi"
+    ],
+    "Swahili": [
+        "Sina habari hizi",
+        "Muktadha hautoi chochote",
+        "Muktadha uliotolewa haujakasirika",
+        "haijatajwa katika",
+        "hakuna habari"
+    ],
+    "Swahili (Kenya)": [
+        "Sina habari hizi",
+        "Muktadha hautoi chochote",
+        "Muktadha uliotolewa haujakasirika",
+        "haijatajwa katika",
+        "hakuna habari"
+    ],
+    "Tamil": [
+        "எனக்கு இந்த தகவல் இல்லை",
+        "சொல்கின்ற சொற்கள் எதுவும் அனுப்பவில்லை",
+        "வழங்கப்பட்ட சொற்கள் ஏதுமில்லை",
+        "வழங்கப்பட்ட சொற்களில் குறிப்பிடப்பட்டது",
+        "தகவல் இல்லை"
+    ],
+    "Tamil (Malaysia)": [
+        "எனக்கு இந்த தகவல் இல்லை",
+        "சொல்கின்ற சொற்கள் எதுவும் அனுப்பவில்லை",
+        "வழங்கப்பட்ட சொற்கள் ஏதுமில்லை",
+        "வழங்கப்பட்ட சொற்களில் குறிப்பிடப்பட்டது",
+        "தகவல் இல்லை"
+    ],
+    "Tamil (Singapore)": [
+        "எனக்கு இந்த தகவல் இல்லை",
+        "சொல்கின்ற சொற்கள் எதுவும் அனுப்பவில்லை",
+        "வழங்கப்பட்ட சொற்கள் ஏதுமில்லை",
+        "வழங்கப்பட்ட சொற்களில் குறிப்பிடப்பட்டது",
+        "தகவல் இல்லை"
+    ],
+    "Tamil (Sri Lanka)": [
+        "எனக்கு இந்த தகவல் இல்லை",
+        "சொல்கின்ற சொற்கள் எதுவும் அனுப்பவில்லை",
+        "வழங்கப்பட்ட சொற்கள் ஏதுமில்லை",
+        "வழங்கப்பட்ட சொற்களில் குறிப்பிடப்பட்டது",
+        "தகவல் இல்லை"
+    ],
+    "Telugu": [
+        "ఈ సమాచారం నాకు లేదు",
+        "సందర్భం ఏమీ ఇవ్వదు",
+        "ఇవ్వబడిన సందర్భం",
+        "ఇక్కడ స్పష్టంగా చేయబడలేదు",
+        "ఏ సమాచారం లేదు"
+    ],
+    "Thai": [
+        "ฉันไม่มีข้อมูลนี้",
+        "บริบทไม่ให้ข้อมูลใด ๆ",
+        "บริบทที่ให้ไม่ให้",
+        "ไม่ระบุในที่ให้",
+        "ไม่มีข้อมูล"
+    ],
+    "Turkish": [
+        "Bu bilgiye sahip değilim",
+        "Bağlam hiçbir şey vermiyor",
+        "Verilen bağlam",
+        "belirtilmemiş",
+        "bilgi yok"
+    ],
+    "Ukrainian": [
+        "У мене немає цієї інформації",
+        "Контекст не надає нічого",
+        "Наданий контекст не",
+        "не вказано в наданому",
+        "немає інформації"
+    ],
+    "Urdu": [
+        "میرے پاس یہ معلومات نہیں ہیں",
+        "سندربھ کچھ نہیں دیتا",
+        "موصولہ سندربھ کچھ",
+        "موصولہ میں بیان نہیں کیا",
+        "کوئی معلومات نہیں ہیں"
+    ],
+    "Urdu (India)": [
+        "میرے پاس یہ معلومات نہیں ہیں",
+        "سندربھ کچھ نہیں دیتا",
+        "موصولہ سندربھ کچھ",
+        "موصولہ میں بیان نہیں کیا",
+        "کوئی معلومات نہیں ہیں"
+    ],
+    "Vietnamese": [
+        "Tôi không có thông tin này",
+        "Bối cảnh không cung cấp bất cứ điều gì",
+        "Bối cảnh được cung cấp không",
+        "không được chỉ định trong",
+        "không có thông tin"
+    ],
+    "Zulu": [
+        "Anginalo lezi zici",
+        "Umbono akufaki nokuthi",
+        "Umbono onikezelwe akufaki",
+        "akuyilapho okwenzelwe",
+        "akukho inqolobane"
+    ]
+}
