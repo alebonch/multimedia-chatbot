@@ -148,6 +148,10 @@
       {
         "question": "Cosa sto guardando??",
         "answer": "Stai guardando un calco che riproduce una testa femminile in marmo romano, parte della Collezione Palagi del Museo Civico Archeologico di Bologna."
+      },
+      {
+        "question": "what is that?",
+        "answer": "It's a plaster cast of a female head from Roman marble, part of the Palagi Collection, dating to the Augustan age."
       }
     ]
   },
@@ -160,6 +164,34 @@
       {
         "question": "Koho jste dívám??",
         "answer": "Díváte se na calco skupiny Tirannicidi, zobrazující řecké hrdiny Armodia a Aristogitona."
+      },
+      {
+        "question": "What I'm looking at.?",
+        "answer": "You're looking at a plaster cast of the group known as the Tyrannicides, depicting the Greeks Harmodius and Aristogeiton."
+      },
+      {
+        "question": "Cosa sto guardando??",
+        "answer": "Stai guardando un calco del gruppo noto come i Tirannicidi, che rappresenta i greci Armodio e Aristogitone."
+      },
+      {
+        "question": "Cosa sta dicendo il cane??",
+        "answer": "Non ho queste informazioni"
+      },
+      {
+        "question": "cosa è?",
+        "answer": "Il calco rappresenta i Tirannicidi Armodio e Aristogitone, eroi ateniesi."
+      }
+    ]
+  },
+  "Bronze Hydria Kalpis": {
+    "QA_pairs": [
+      {
+        "question": "cosa sto guardando?",
+        "answer": "Stai guardando un'opera d'arte intitolata 'Bronze Hydria Kalpis'."
+      },
+      {
+        "question": "puoi dirmi qualcosa di questa opera?",
+        "answer": "L'opera 'Bronze Hydria Kalpis' risale al 537 a.C., alta 39 cm, realizzata in argilla, si trova al Museo d'Arte Cicladica."
       }
     ]
   }

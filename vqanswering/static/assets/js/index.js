@@ -2,6 +2,7 @@ const me = {};
 const you = {};
 const micro_div = $("#microphone")
 const micro_icon = $("#micro-icon")
+const flag_icon = $("#flag-image")
 const languageDropDown = $("#language-select")
 let languages = {}
 let userLang = navigator.language || navigator.userLanguage;
@@ -9,11 +10,21 @@ let isSupported = false;
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
 // const SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
+let unsupportedBrowser = false;
+let recognition;
+if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    recognition = new SpeechRecognition();
+    let speechRecognitionList = new SpeechGrammarList();
+    recognition.grammars = speechRecognitionList;
+    recognition.continuous = false;
+} else {
+    unsupportedBrowser = true;
 
-let recognition = new SpeechRecognition();
-let speechRecognitionList = new SpeechGrammarList();
-recognition.grammars = speechRecognitionList;
-recognition.continuous = false;
+    micro_icon.attr('title', 'It looks like your mic is unavailable');
+    flag_icon.addClass('grayed-out')
+    console.log('Using speech-polyfill not allowed');
+}
+
 let userLanguageName = 'English (United States)';
 window.onload = function () {
     fetch('../../static/assets/json/languages.json')
@@ -36,10 +47,14 @@ window.onload = function () {
             console.log(isSupported, userLang);
             if (isSupported) {
                 console.log('User language is supported:', userLang);
-                recognition.lang = userLang;
+                if (recognition) {
+                    recognition.lang = userLang;
+                } else {
+                    console.log('SpeechRecognition is not defined');
+                }
                 let flagUrl = languages[userLanguageName][1];
                 let placeholderText = languages[userLanguageName][2];
-                $("#flag-image").attr("src", flagUrl);
+                flag_icon.attr("src", flagUrl);
                 $(".input_text").attr("placeholder", placeholderText);
             } else {
                 console.log('User language is not supported:', userLang);
@@ -67,8 +82,14 @@ function populateDropdownMenu(languages) {
 }
 
 // Add the dropdown menu to the page
-$("#flag-image").click(function() {
-    $("#language-select").toggle();
+flag_icon.click(function() {
+    if (unsupportedBrowser) {
+        window.alert("Sorry, your browser does not support speech recognition. Please try a different browser.");
+        return;
+    } else {
+        $("#language-select").toggle();
+    }
+
 });
 console.log(languages['English (United States)'])
 // Add an event listener to the dropdown menu
@@ -80,7 +101,7 @@ $("#language-select").change(function() {
     let placeholderText = languages[$(this).find('option:selected').text()][2];
     console.log(selectedLanguage);
     recognition.lang = selectedLanguage;
-    $("#flag-image").attr("src", flagUrl);
+    flag_icon.attr("src", flagUrl);
     $(".input_text").attr("placeholder", placeholderText);
     $("#language-select").toggle();
 });
@@ -88,7 +109,7 @@ const checkMicrophoneAvailability = () => {
     navigator.mediaDevices.enumerateDevices()
         .then(function (devices) {
             const audioDevices = devices.filter(device => device.kind === "audioinput");
-            if (audioDevices.length > 0) {
+            if (audioDevices.length > 0 && !unsupportedBrowser)  {
                 console.log("Microphone is available");
                 if (micro_icon.hasClass('bx-microphone-off')) {
                     micro_icon.removeClass('bx-microphone-off');
@@ -101,6 +122,7 @@ const checkMicrophoneAvailability = () => {
                     micro_icon.removeClass('bx-microphone');
                     micro_icon.addClass('bx-microphone-off');
                     micro_icon.attr('title', 'It looks like your mic is unavailable');
+                    flag_icon.addClass('grayed-out')
                 }
                 window.alert("Please activate your microphone or plug in a microphone and refresh this page to use this app.");
             }
@@ -193,6 +215,15 @@ $(".input_text").on("keydown", function (e) {
 
 
 const startRecording = () => {
+    if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+        console.log('SpeechRecognition API is not supported in this browser');
+        micro_icon.removeClass('bx-microphone');
+        micro_icon.addClass('bx-microphone-off');
+        micro_icon.attr('title', 'SpeechRecognition API is not supported in this browser');
+        alert('Sorry, your browser does not support speech recognition. Please try a different browser.');
+        return;
+    }
+
     console.log('start');
     micro_icon.addClass("blink-image");
 
