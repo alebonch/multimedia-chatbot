@@ -152,6 +152,14 @@
       {
         "question": "what is that?",
         "answer": "It's a plaster cast of a female head from Roman marble, part of the Palagi Collection, dating to the Augustan age."
+      },
+      {
+        "question": "Cosa??",
+        "answer": "Non ho questa informazione."
+      },
+      {
+        "question": "Cosa hai rappresentata in quest'opera??",
+        "answer": "L'opera rappresenta una testa femminile in marmo romano, probabilmente augustea, parte della Collezione Palagi del Museo Civico Archeologico di Bologna."
       }
     ]
   },
@@ -192,6 +200,14 @@
       {
         "question": "puoi dirmi qualcosa di questa opera?",
         "answer": "L'opera 'Bronze Hydria Kalpis' risale al 537 a.C., alta 39 cm, realizzata in argilla, si trova al Museo d'Arte Cicladica."
+      }
+    ]
+  },
+  "Vittimari": {
+    "QA_pairs": [
+      {
+        "question": "Cosa sto guardando?",
+        "answer": "Stai guardando un calco di una porzione del fregio del Partenone, raffigurante vittimari con animali da sacrificare, esposto alla Gipsoteca di Arte Antica e Antiquarium dell'Università di Pisa."
       }
     ]
   }

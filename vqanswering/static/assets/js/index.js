@@ -25,7 +25,7 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
     console.log('Using speech-polyfill not allowed');
 }
 
-let userLanguageName = 'English (United States)';
+let userLanguageName = 'English (United Kingdom)';
 window.onload = function () {
     fetch('../../static/assets/json/languages.json')
         .then(response => {
@@ -58,7 +58,7 @@ window.onload = function () {
                 $(".input_text").attr("placeholder", placeholderText);
             } else {
                 console.log('User language is not supported:', userLang);
-                recognition.lang = 'English (United States)'; // default language
+                recognition.lang = 'English (United Kingdom)'; // default language
             }
 
             populateDropdownMenu(languages);
@@ -91,7 +91,7 @@ flag_icon.click(function() {
     }
 
 });
-console.log(languages['English (United States)'])
+console.log(languages['English (United Kingdom)'])
 // Add an event listener to the dropdown menu
 $("#language-select").change(function() {
     let selectedLanguage = $(this).val();

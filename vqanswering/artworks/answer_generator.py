@@ -223,7 +223,7 @@ def find_lang(text):
                     lang_name = language
                     return lang_name
                 else:
-                    lang_name = 'English (United States)'
+                    lang_name = 'English (United Kingdom)'
 
         return lang_name
     except:
@@ -256,12 +256,12 @@ def handle_keyword_responses(answer, question, language):
                 q_lan = find_lang(question)
                 print(q_lan)
                 translated_answer = i_dont_know_any_language[q_lan][0] if q_lan else \
-                    i_dont_know_any_language['English (United States)'][0]
+                    i_dont_know_any_language['English (United Kingdom)'][0]
 
                 return {
                     "answer": translated_answer,
                     "question": question,
-                    "question language": "English (United States)" if is_english(question) else language,
+                    "question language": "English (United Kingdom)" if is_english(question) else language,
                     "answer translated": translated_answer
                 }
     return None
@@ -283,6 +283,6 @@ def analyze_answer(answer, question, language):
     return {
         "answer": answer,
         "question": question,
-        "question language": "English (United States)" if is_english(question) else language,
+        "question language": "English (United Kingdom)" if is_english(question) else language,
         "answer translated": translated_answer
     }
