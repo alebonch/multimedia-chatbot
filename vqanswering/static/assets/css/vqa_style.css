@@ -554,7 +554,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #artwork-info{
     display: flex;
-    max-height: 20%;
+    max-height: 30%;
     flex-direction: row;
             width: 100%;
     justify-content: space-between;
@@ -575,7 +575,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .artwork-image {
-    max-height: 100%;
+    max-height: 70%;
     /*display: flex;*/
     width: auto;
     /*min-height: 50vh;*/
@@ -699,7 +699,7 @@ h1, h2, h3, h4, h5, h6 {
     filter: grayscale(100%);
 }
 .chat-ul {
-    height: 90%;
+    height: 100%;
     background-color: #f5f5f5;
     max-height: 90%;
 }

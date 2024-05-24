@@ -1,7 +1,8 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from artworks.views import home_view, gallery_view, handle_chat_question, Artworkchat,  admin_home, add_artworks_via_folder  # add_artworks_via_wikipedia, add_artworks_from_json,
 from artworks.models import Artwork
+# from artworks.urls import get_artwork_urls
 
 # app_name = 'myapp'
 urlpatterns = [
@@ -13,11 +14,7 @@ urlpatterns = [
     # path('add-artworks-from-json/', add_artworks_from_json, name='add_artworks_from_json'),
     # path('add-artworks-via-wikipedia/', add_artworks_via_wikipedia, name='add_artworks_via_wikipedia'),
     path('add-artworks-via-folder/', add_artworks_via_folder, name='add_artworks_via_folder'),
+    path('', include('artworks.urls')),
 ]
 
-objs = Artwork.objects.all()
 
-for masterpiece in objs:
-    print(masterpiece.link)
-    link = 'gallery/' + masterpiece.link + '/'
-    urlpatterns.append(path(link, Artworkchat.as_view(art=masterpiece)))

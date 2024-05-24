@@ -17,7 +17,13 @@
       "为什么狗在叫",
       "为什么为什么狗在叫？狗在叫？",
       "Was wir in diesen Berg das Gäste.?",
-      "Ich habe diese Information nicht."
+      "Ich habe diese Information nicht.",
+      "parlami del cavallo?",
+      "Perchè rage?",
+      "chi è il personaggio dentro il portone?",
+      "Quali sono le sue opere più importanti?",
+      "cecosa stanno facendo?",
+      "cosa stanno facendo?"
     ]
   },
   "Ingresso Galleria XXII": {
@@ -47,6 +53,16 @@
   "Bronze Hydria Kalpis": {
     "unresolved": [
       "puoi descrivermela?"
+    ]
+  },
+  "Gruppo statuario di Laocoonte": {
+    "unresolved": [
+      "come si chiamano i figli di Laoconte?"
+    ]
+  },
+  "Cycladic Figurine": {
+    "unresolved": [
+      "come si chiama?"
     ]
   }
 }

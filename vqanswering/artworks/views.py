@@ -85,17 +85,15 @@ def gallery_view(request, page=None):
 
 
 class Artworkchat(View):
-    art = "tmp"
-
-    def post(self, request):
-        context = {'artwork': self.art, 'ga_key': ga_key}
+    def post(self, request, link):
+        artwork = Artwork.objects.get(link=link)
+        context = {'artwork': artwork, 'ga_key': ga_key}
         return render(request, "artwork-chat.html", context)
 
-    def get(self, request):
-        context = {'artwork': self.art, 'ga_key': ga_key}
+    def get(self, request, link):
+        artwork = Artwork.objects.get(link=link)
+        context = {'artwork': artwork, 'ga_key': ga_key}
         return render(request, "artwork-chat.html", context)
-
-
 @csrf_exempt
 def handle_chat_question(request):
     url = request.POST.get("url")
@@ -107,15 +105,15 @@ def handle_chat_question(request):
     address_link = url.rsplit('gallery/')[1][:-1]
     decoded_link = urllib.parse.unquote(address_link)
     artwork = Artwork.objects.filter(link__iexact=decoded_link).first()
-    print("in handle chat", decoded_link)
-
+    # print("in handle chat", decoded_link)
+    # print("artwork image", artwork.image)
     if artwork is None:
         return JsonResponse({'answer': 'Artwork not found'})
 
     context = artwork.description
     title = artwork.title
     print(title)
-    answer = AnswerGenerator().produce_answer(question, language, title, context)
+    answer = AnswerGenerator().produce_answer(question, language, title, context, artwork.thumb_image)
 
     return JsonResponse({'answer': answer})
 
@@ -161,6 +159,7 @@ def add_artworks_via_folder(request):
                 'Location': r"Location: (.+)",
                 'Subject': r"Subject: (.+)",
                 'Type of Object': r"Type of object: (.+)",
+                'Validated by': r"Validated by: (.+)",
                 'Link': r"Link: (.+)",
             }
 
@@ -187,6 +186,7 @@ def add_artworks_via_folder(request):
                 subject=extracted_data['Subject'],
                 type_of_object=extracted_data['Type of Object'],
                 century=century,
+                validated_by=extracted_data['Validated by'],
                 web_link=extracted_data['Link'],
                 link=masterpiece,
             )

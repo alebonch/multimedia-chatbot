@@ -1,4 +1,5 @@
 import ast
+import base64
 import os
 import re
 import time
@@ -15,7 +16,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_KEY')
 # Set up the model
-model_engine = "gpt-4-0125-preview"  # "text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
+model_engine = "gpt-4o-2024-05-13"  # "gpt-4-0125-preview""text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
 
 
 # i_dont_know_answer = ["I don't have this information",
@@ -107,37 +108,54 @@ class AnswerGenerator:
         with open("static/assets/json/unresolved_questions.json", "w", encoding='utf-8') as json_file:
             json.dump(self.unresolved_questions, json_file, indent=2, ensure_ascii=False)
 
-    def produce_answer(self, question, language, artwork_title, context):
+    def produce_answer(self, question, language, artwork_title, context, IMAGE_PATH):
         if artwork_title != self.last_artwork_title:
             # Reset last_question and last_answer if artwork_title has changed
             self.last_question = ""
             self.last_answer = ""
             print('resetted last question and last answer')
         self.last_artwork_title = artwork_title
-
+        base64_image = encode_image(IMAGE_PATH)
+        system_prompt = (
+            "Follow these steps to answer the user question: "
+            "Step 1: Read the question carefully, understand it and remember the language it has been written. "
+            "Step 2: Provide a clear answer keeping in mind the following guidelines: "
+            "- Answer in the same language as the question. "
+            "- Answer within 30 words "
+            "- If the question is unrelated to the artwork, please state so. "
+            "- If there's difficulty understanding the question or if the question is not comprehensible, explicitly state that and ask the user to reformulate the question. Use one of these responses: "
+            "'I'm sorry, I didn't understand the question. Could you please reformulate it?' "
+            "'I didn't catch that. Could you clarify your question?' "
+            "'Your question is not clear to me. Could you please rephrase?' "            "- If the information is not available in the context, try your best to generate an answer based on the available information. "
+            "If you can't provide an answer, then you can randomly use one of these possible responses: "
+            "'I'm sorry, but I don't have that information in the context provided.' "
+            "'I apologize, but I can't find that information in the details I have.' "
+            "'Sorry, I don't have those details in the given context.' "
+            "'I'm afraid that information isn't available in the context I have.' "
+            "'I can't find this information in the artwork's details.' "
+            "and suggest the user to ask something else. "
+            "- Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
+            "- If the question is in first person singular, respond in second person singular. "
+            "Step 3: Translate the produced answer in the same language of the question. "
+            "Step 4: Provide the answer to the user in JSON format with the following keys: question, question language, answer, answer translated, resolved, understood. "
+            "Step 5: The JSON format should be: "
+            '{'
+            '"question": "The original question", '
+            '"question language": "The language of the question", '
+            '"answer": "The concise answer", '
+            '"answer translated": "The translated answer", '
+            '"resolved": "True if answered, False if unresolved", '
+            '"understood": "True if question is understood, False if not understood"'
+            '}'
+        )
         prompt = f"Consider the artwork titled '{artwork_title}' and its Context. " \
                  f"Context: {context}. \n" \
                  f"Question: {question}. \n" \
                  f"Answer:"
 
-        system_prompt = (
-            "Follow these steps to answer the user question: "
-            "Step 1: Read the question carefully, understand it and remember the language it has been written. "
-            "Step 2: Provide a clear and concise answer keeping in mind the following guidelines: "
-            "- Answer in the same language as the question. "
-            "- Answer within 30 words "
-            "- If the question is unrelated to the artwork, please state so. "
-            "- If the information is not available in the Context, indicate that you don't have the information, writing in the language of the question 'I don't have this information.' "
-            "- If there's difficulty understanding the question, ask the user to clarify the question. "
-            "- Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
-            "- If the question is in first person singular, respond in second person singular. "
-            "Step 3: Translate the produced answer in the same language of the question. "
-            "Step 4: Provide the answer to the user in json format with the following keys: question, question language, answer, answer translated. "
-        )
-
         if self.last_question != "" and self.last_answer != "":
-            system_prompt += f" - I'll take into account the last question and answer, if they exist: Q: {self.last_question} A: {self.last_answer} \n"
-
+            system_prompt += (f" - If the current question is the same as the last question, generate a different "
+                              f"response to avoid repetition. Last Q: {self.last_question} Last A: {self.last_answer} \n")
         print(language)
         answer = ""
         retry_count = 0
@@ -149,7 +167,12 @@ class AnswerGenerator:
                     model=model_engine,
                     messages=[
                         {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": prompt},
+                        {"role": "user", "content": [
+                            {"type": "text", "text": prompt},
+                            {"type": "image_url", "image_url": {
+                                "url": f"data:image/png;base64,{base64_image}"}
+                             }
+                        ]},
                     ],
                     temperature=0.25,
                 )
@@ -178,7 +201,8 @@ class AnswerGenerator:
                         self.unresolved_questions[artwork_title]["unresolved"].append(question)
 
                 self.last_question = question
-                self.last_answer = answer_dic['answer translated'] if is_english(answer_dic['answer']) and answer_dic['question language'].startswith("English") != True else answer_dic['answer']
+                self.last_answer = answer_dic['answer translated'] if is_english(answer_dic['answer']) and answer_dic[
+                    'question language'].startswith("English") != True else answer_dic['answer']
 
                 self.save_data()
                 break  # Break the loop if the API call is successful
@@ -193,6 +217,16 @@ class AnswerGenerator:
         print('answer', answer)
         print(self.last_answer)
         return self.last_answer
+
+
+def encode_image(image_path):
+    print(image_path)
+    base_dir = os.path.dirname(__file__)
+    print(base_dir)# get the directory of the current script
+    full_path = os.path.join(base_dir, '..', image_path.lstrip('/'))  # construct the full path
+    print(full_path)
+    with open(full_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
 
 
 def normalize_question(question):

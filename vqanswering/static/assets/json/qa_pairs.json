@@ -34,10 +34,6 @@
         "answer": "Stai guardando 'Kirschenrummel 1920', un'incisione su legno di Axl Leskoschek che rappresenta la rivolta per il caro-prezzi delle ciliegie a Graz."
       },
       {
-        "question": "In welcher Sprache ist das?",
-        "answer": "Diese Information ist in Englisch."
-      },
-      {
         "question": "Welche Oper ist das?",
         "answer": "Diese Frage steht nicht im Zusammenhang mit dem Kunstwerk."
       },
@@ -106,10 +102,6 @@
         "answer": "Der 'Kirschenrummel' zeigt Menschen verschiedener Gesellschaftsschichten, die gemeinsam gegen die Obrigkeit aufstehen, insbesondere gegen hohe Lebensmittelpreise und soziale Ungleichheit."
       },
       {
-        "question": ")",
-        "answer": "I don't have this information."
-      },
-      {
         "question": "what is that?",
         "answer": "I don't have this information"
       },
@@ -118,8 +110,272 @@
         "answer": "The riot, known as 'Cherry Rage', was triggered by high food prices, particularly cherries, amid post-WW1 hardship, leading to protests for affordable food."
       },
       {
-        "question": "perchè il cane?",
-        "answer": "I don't have this information"
+        "question": "quali figure sono presenti nella stampa?",
+        "answer": "Nella stampa compaiono donne, ex ufficiali, lavoratori e studenti."
+      },
+      {
+        "question": "Perchè cherry?",
+        "answer": "Le ciliegie erano particolarmente contestate per via dell'alta domanda dovuta alla tassa sulla marmellata e alla scarsità di zucchero, portando a proteste contro i loro alti prezzi."
+      },
+      {
+        "question": "why Rage?",
+        "answer": "The 'Cherry Rage' refers to the violent protest against high cherry prices, symbolizing broader anger over post-war food shortages and economic hardships."
+      },
+      {
+        "question": "Perchè Rage?",
+        "answer": "Il termine \"Rage\" si riferisce alla rabbia e alla frustrazione delle persone per l'alta inflazione e la scarsità di cibo dopo la Prima Guerra Mondiale, che ha portato alla rivolta per i prezzi delle ciliegie a Graz nel 1920."
+      },
+      {
+        "question": "cosa vediamo nell'opera",
+        "answer": "Nell'opera vediamo persone di diverse estrazioni sociali unite contro le forze dell'ordine, riconoscibili dai loro copricapi."
+      },
+      {
+        "question": "Was machen die Figuren im Gemälde?",
+        "answer": "Die Figuren im Gemälde stehen Schulter an Schulter und trotzen den Gesetzeshütern."
+      },
+      {
+        "question": "chi è il personaggio dentro il portone?",
+        "answer": "Non ho queste informazioni."
+      },
+      {
+        "question": "perchè Cherry Rage?",
+        "answer": "Non ho questa informazione."
+      },
+      {
+        "question": "Which technique was used?",
+        "answer": "Woodcut technique was used."
+      },
+      {
+        "question": "Cosa sto vedendo?",
+        "answer": "Stai vedendo un'opera di Axl Leskoschek che rappresenta la rivolta del 'Cherry Rage' del 1920 a Graz."
+      },
+      {
+        "question": "Parlami di Leskoschek",
+        "answer": "Axl Leskoschek era un artista austriaco, noto per le sue incisioni su legno e le sue convinzioni social-democratiche e comuniste. Ha vissuto in esilio in Brasile."
+      },
+      {
+        "question": "Quali sono le sue opere più importanti?",
+        "answer": "Non ho queste informazioni"
+      },
+      {
+        "question": "Parlami di Leskoschek, quali sono le sue opere più importanti?",
+        "answer": "Mi dispiace, ma non ho queste informazioni nel contesto fornito."
+      },
+      {
+        "question": "chi è Axl Leskoschek?",
+        "answer": "Axl Leskoschek era un artista, illustratore di libri per bambini e professore d'accademia, noto per il suo lavoro in Brasile e le sue convinzioni politiche socialdemocratiche e comuniste."
+      },
+      {
+        "question": "chi vediamo nell'opera?",
+        "answer": "Vediamo persone di tutte le estrazioni sociali, tra cui donne, ex ufficiali, lavoratori e studenti."
+      },
+      {
+        "question": "cosa stanno facendo?",
+        "answer": "Stanno protestando contro i prezzi elevati del cibo, in particolare delle ciliegie, e la situazione sfugge di mano, portando a scontri con le forze dell'ordine."
+      },
+      {
+        "question": "chi sono le persone ritratte?",
+        "answer": "Le persone ritratte includono donne, ex ufficiali, lavoratori e studenti."
+      },
+      {
+        "question": "e cosa stanno fav",
+        "answer": "I'm afraid that information isn't available in the context I have. Potresti chiedere qualcos'altro?"
+      },
+      {
+        "question": "who are the people there?",
+        "answer": "The artwork depicts women, former officers, workers, and students protesting together."
+      },
+      {
+        "question": "what are they doing?",
+        "answer": "They are protesting against high food prices, especially cherries, and the situation escalates into a riot."
+      },
+      {
+        "question": "wh' cherries",
+        "answer": "I'm sorry, but I don't have that information in the context provided. Could you please ask something else?"
+      },
+      {
+        "question": "why cherries?",
+        "answer": "Cherries were in high demand due to the jam tax and sugar shortage, making them a focal point of the protest."
+      },
+      {
+        "question": "wha boam?",
+        "answer": "I'm sorry, but I don't have that information in the context provided. Could you please reformulate the question?"
+      },
+      {
+        "question": "wh' ch?",
+        "answer": "I'm afraid that information isn't available in the context I have. Could you please reformulate the question?"
+      },
+      {
+        "question": "            \"- If there's difficulty understanding the question or if the question is not comprehensible, explicitly state that and ask the user to reformulate the question. \"",
+        "answer": "Could you please reformulate the question?"
+      },
+      {
+        "question": "what i-m looking_",
+        "answer": "Could you please reformulate the question?"
+      },
+      {
+        "question": "what is?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "What is cherry rage?",
+        "answer": "The 'Cherry Rage' refers to a violent protest in Graz on 7 June 1920, sparked by high food prices, especially cherries. The riot resulted in 13 deaths and significant unrest."
+      },
+      {
+        "question": "who are in the painting?",
+        "answer": "The painting depicts women, former officers, workers, and students standing together in protest."
+      },
+      {
+        "question": "ghslkhdflvd",
+        "answer": "I'm sorry, but I don't understand the question. Could you please reformulate it?"
+      },
+      {
+        "question": "efjhdf lkhde",
+        "answer": "I'm sorry, but I don't understand the question. Could you please reformulate it?"
+      },
+      {
+        "question": "cosa sono?",
+        "answer": "Mi dispiace, ma non capisco la domanda. Potresti riformularla per favore?"
+      },
+      {
+        "question": "who?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "who is the author?",
+        "answer": "Axl Leskoschek"
+      },
+      {
+        "question": "tell me about him?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "who was Axl?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "who was Leskoschek?",
+        "answer": "Axl Leskoschek was an artist, children's book illustrator, and academy professor known for his political activism and woodcut technique."
+      },
+      {
+        "question": "which are his famous artworks?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "quali sono le opere piu famose dell'autore?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "Ci sono animali nel quadro?",
+        "answer": "Mi dispiace, ma non ci sono animali nel quadro 'Cherry Rage 1920'."
+      },
+      {
+        "question": "Io vedo dei cavalli",
+        "answer": "Mi dispiace, ma non ci sono cavalli nel quadro 'Cherry Rage 1920'."
+      },
+      {
+        "question": "Who are the people in there and what are they doing?",
+        "answer": "The people include women, former officers, workers, and students protesting against high food prices, standing together and defying law enforcers."
+      },
+      {
+        "question": "How are the law enforcers dressed?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
+      },
+      {
+        "question": "wh?",
+        "answer": "I'm afraid that information isn't available in the context I have."
+      },
+      {
+        "question": "w?",
+        "answer": "I'm sorry, I didn't understand the question. Could you please reformulate it?"
+      },
+      {
+        "question": "what are doing the law enforcers?",
+        "answer": "The law enforcers are trying to control the crowd, with some on horseback and others raising their arms to manage the situation."
+      },
+      {
+        "question": "there is someone in the door?",
+        "answer": "Yes, there is a person visible in the doorway."
+      },
+      {
+        "question": "dove si trova il cavallo nel quadro?",
+        "answer": "Il cavallo si trova sul lato destro del quadro."
+      },
+      {
+        "question": "mi puoi dare le coordinate del cavallo rispetto l'immagine?",
+        "answer": "Il cavallo si trova nella parte centrale destra dell'immagine."
+      },
+      {
+        "question": "mi puoi dare le coordinate del centro del cavallo rispetto alla width height dell'immagine",
+        "answer": "Il centro del cavallo si trova circa al 75% della larghezza e al 25% dell'altezza dell'immagine."
+      },
+      {
+        "question": "ci puoi dare la bounding box del cavallo?",
+        "answer": "La bounding box del cavallo è circa dal 60% al 80% della larghezza e dal 10% al 40% dell'altezza dell'immagine."
+      },
+      {
+        "question": "chi c'è dietro la porta?",
+        "answer": "Non è possibile identificare chi c'è dietro la porta nell'immagine."
+      },
+      {
+        "question": "c'è qualcuno?",
+        "answer": "Sì, ci sono molte persone nell'immagine."
+      },
+      {
+        "question": "c'è qualcuno dietro la porta?",
+        "answer": "Sì, ci sono persone dietro la porta nell'immagine."
+      },
+      {
+        "question": "chi sta guardando il personaggio in basso a sinistra dell'immagine?",
+        "answer": "Il personaggio in basso a sinistra dell'immagine guarda verso la folla."
+      },
+      {
+        "question": "chi sta guardando il personaggio in basso a sinistra dell'immagine col braccio alzato?",
+        "answer": "Il personaggio in basso a sinistra dell'immagine col braccio alzato guarda verso la folla."
+      },
+      {
+        "question": "quante persone sono rappresentate?",
+        "answer": "Sono rappresentate 22 persone."
+      },
+      {
+        "question": "cosa c'è scritto in basso a sinistra? vedo dei caratteri alfanumerici",
+        "answer": "In basso a sinistra c'è scritto 'AL 55'."
+      },
+      {
+        "question": "che fa il cavallo?",
+        "answer": "Il cavallo è montato da un ufficiale e sembra essere usato per mantenere l'ordine tra la folla."
+      },
+      {
+        "question": "cosa hanno in testa le donne?",
+        "answer": "Le donne indossano cappelli."
+      },
+      {
+        "question": "mi puoi dscrivere cosa succede?",
+        "answer": "La scena mostra una protesta di persone contro le forze dell'ordine. Ci sono donne, ex ufficiali, lavoratori e studenti che manifestano insieme."
+      },
+      {
+        "question": "perchè?",
+        "answer": "La scena rappresenta una protesta contro l'aumento dei prezzi del cibo, in particolare delle ciliegie, che portò a un conflitto sociale e alla morte di 13 persone."
+      },
+      {
+        "question": "cosa c'è in terra?",
+        "answer": "In terra ci sono ciottoli."
+      },
+      {
+        "question": "raccontami il contesto storico?",
+        "answer": "Dopo la Prima Guerra Mondiale, la fame e l'inflazione portarono a rivolte sociali a Graz il 7 giugno 1920, culminate in una protesta violenta contro l'aumento dei prezzi del cibo, in particolare delle ciliegie."
+      },
+      {
+        "question": "perchè il museo espone questo quadro?",
+        "answer": "Il museo espone questo quadro per illustrare il conflitto sociale e la protesta contro l'aumento dei prezzi alimentari a Graz nel 1920."
+      },
+      {
+        "question": "perchè ha usato il nero invece del rosso?",
+        "answer": "L'artista ha usato il nero per creare forti contrasti e sottolineare l'espressività e l'impatto visivo della scena."
+      },
+      {
+        "question": "Quale è la vision e mission di questo museo?",
+        "answer": "I'm sorry, but I don't have that information in the context provided."
       }
     ]
   },
@@ -160,6 +416,26 @@
       {
         "question": "Cosa hai rappresentata in quest'opera??",
         "answer": "L'opera rappresenta una testa femminile in marmo romano, probabilmente augustea, parte della Collezione Palagi del Museo Civico Archeologico di Bologna."
+      },
+      {
+        "question": "C'è la testa di un cavallo?",
+        "answer": "Non ho questa informazione."
+      },
+      {
+        "question": "chi lo ha fatto?",
+        "answer": "Non ho questa informazione."
+      },
+      {
+        "question": "chi ha realizzato questa opera?",
+        "answer": "Non ho questa informazione."
+      },
+      {
+        "question": "cosa è il gesso?",
+        "answer": "Il gesso è un materiale bianco, morbido e solubile in acqua, usato per calchi e sculture."
+      },
+      {
+        "question": "what is this head?",
+        "answer": "This head is a cast of a female head in Roman marble, part of the Palagi Collection, possibly a replica of the Lemnian Athena."
       }
     ]
   },
@@ -208,6 +484,134 @@
       {
         "question": "Cosa sto guardando?",
         "answer": "Stai guardando un calco di una porzione del fregio del Partenone, raffigurante vittimari con animali da sacrificare, esposto alla Gipsoteca di Arte Antica e Antiquarium dell'Università di Pisa."
+      }
+    ]
+  },
+  "Cycladic Figurine": {
+    "QA_pairs": [
+      {
+        "question": "perchè ha le braccia conserte?",
+        "answer": "Le braccia conserte delle figurine femminili potrebbero simboleggiare una posizione passiva, associata al loro ruolo di fertilità e riproduzione."
+      },
+      {
+        "question": "perchè è nuda?",
+        "answer": "La nudità potrebbe sottolineare l'importanza della fertilità e della riproduzione, elementi centrali nel simbolismo di queste figurine."
+      },
+      {
+        "question": "ciao, perchè è nuda?",
+        "answer": "La nudità simboleggia fertilità e riproduzione, riflettendo l'importanza del ruolo delle donne nella società dell'epoca."
+      },
+      {
+        "question": "cosa sono le cycladic figurines?",
+        "answer": "Le figurine cicladiche sono sculture in marmo della cultura cicladica, rappresentanti forme umane stilizzate, spesso associate alla fertilità e alla riproduzione, risalenti al 2800-2000 a.C."
+      },
+      {
+        "question": "di che colore sono?",
+        "answer": "Le figurine cicladiche sono di colore bianco marmoreo, spesso con tracce di pigmenti rossi, blu, verdi o neri."
+      },
+      {
+        "question": "che storie raccontano?",
+        "answer": "Le storie raccontate dalle figurine cicladiche includono aspetti della vita quotidiana, il ruolo della fertilità e della riproduzione, e possibili rituali funerari. Riflettono anche l'arte e la cultura delle prime società delle Cicladi."
+      },
+      {
+        "question": "ib che museo sono?",
+        "answer": "Sono al Museo di Arte Cicladica."
+      },
+      {
+        "question": "Perchè le espone?",
+        "answer": "Le espone per mostrare l'importanza culturale e artistica delle figurine cicladiche e per educare i visitatori sulla civiltà che le ha create."
+      },
+      {
+        "question": "in che teritorio sono state prodotte?",
+        "answer": "Le figurine cicladiche sono state prodotte nelle isole Cicladi."
+      },
+      {
+        "question": "Cosa è il triangolo?",
+        "answer": "Il triangolo è il triangolo pubico, una caratteristica anatomica delle figurine femminili cicladiche."
+      },
+      {
+        "question": "perchè le braccia sono conserte?",
+        "answer": "Le braccia sono conserte per rappresentare una posizione passiva, comune nelle figurine femminili cicladiche."
+      },
+      {
+        "question": "Sono solo donne?",
+        "answer": "No, ci sono anche figurine maschili che rappresentano cacciatori, guerrieri e musicisti."
+      },
+      {
+        "question": "in che materiali sono fabbricate?",
+        "answer": "Le figurine cicladiche sono fabbricate in marmo."
+      },
+      {
+        "question": "perchè non hanno gli occhi?",
+        "answer": "Le figurine cicladiche erano decorate con colori sul viso e sul corpo, ma i dettagli come gli occhi potrebbero essersi deteriorati nel tempo."
+      },
+      {
+        "question": "descrivimi l'immagine?",
+        "answer": "La figurina è di marmo, con braccia piegate sul ventre, un naso prominente, spalle angolari e un addome leggermente disteso."
+      },
+      {
+        "question": "abbiamo notizie sul processo di manifattura?",
+        "answer": "Sì, il processo di manifattura includeva l'uso di strumenti semplici come emery e ossidiana, e richiedeva 20-30 ore per scolpire una piccola figurina."
+      },
+      {
+        "question": "cosa è emery?",
+        "answer": "Emery è una roccia dura utilizzata come abrasivo per scolpire e levigare il marmo."
+      },
+      {
+        "question": "che storie raccontano le collezioni del museo?",
+        "answer": "Le collezioni del museo raccontano la preistoria delle Cicladi, la vita quotidiana degli isolani, e l'arte del marmo."
+      },
+      {
+        "question": "solo del periodo cicladico?",
+        "answer": "Sì, la figurina appartiene al periodo cicladico."
+      },
+      {
+        "question": "il museo racconta storie solo del periodo cicladico?",
+        "answer": "No, il museo racconta storie anche dell'arte antica greca e delle antichità cipriote."
+      },
+      {
+        "question": "che artisti vengono influenzati da queste figurine?",
+        "answer": "Brancusi e Modigliani sono alcuni degli artisti influenzati da queste figurine."
+      },
+      {
+        "question": "Puoi suggerirci un'altra figurina presente al museo?",
+        "answer": "Ecco un'altra figurina presente al Museo di Arte Cicladica."
+      },
+      {
+        "question": "chi è Brancusi ?",
+        "answer": "Brancusi è stato un famoso scultore del XX secolo."
+      },
+      {
+        "question": "e Modigliani?",
+        "answer": "Modigliani è stato un artista del XX secolo ispirato dalle figurine cicladiche."
+      },
+      {
+        "question": "puoi dirmi qualcosa sulla loro forma?",
+        "answer": "Le figurine cicladiche hanno una forma geometrica e astratta, con proporzioni armoniose. Presentano teste triangolari, nasi aquilini, spalle angolari e addomi leggermente distesi, spesso simbolo di gravidanza."
+      },
+      {
+        "question": "A cosa si ispira la loro forma?",
+        "answer": "La loro forma è ispirata alla figura umana, con un'enfasi su caratteristiche geometriche e proporzioni armoniose. Spesso rappresentano la fertilità e la riproduzione, simboleggiando la Grande Dea Madre."
+      },
+      {
+        "question": "ricordano un oggetto quotidiano?",
+        "answer": "No, non ricordano un oggetto quotidiano."
+      },
+      {
+        "question": "e uno strumento musicale?",
+        "answer": "No, non è uno strumento musicale."
+      },
+      {
+        "question": "ricordano la forma di uno strumento musicale?",
+        "answer": "No, non ricordano la forma di uno strumento musicale."
+      }
+    ]
+  },
+  "Cavalieri-e-hypparchoi": {
+    "QA_pairs": [
+      {
+        "question": "what is this artwork?",
+        "answer": "This is a plaster cast of a portion of the Parthenon frieze, depicting horsemen."
       }
     ]
   }
