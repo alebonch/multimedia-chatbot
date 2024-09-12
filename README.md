@@ -28,3 +28,5 @@ If you use this software in your work please cite:
 ## Acknowledgements
 This work was partially supported by the European Commission under European Horizon 2020 Programme, grant number 101004545 - [ReInHerit](https://www.reinherit.eu).
 
+## Note
+This is the branch made by the student that worked on adding a metadata for his thesis. (Alessandro Aldo Raoul Bonciani)
