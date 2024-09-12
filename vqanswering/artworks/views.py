@@ -16,6 +16,10 @@ from django.conf import settings
 import re
 import requests
 from utils.download_thumbs import create_thumb
+# views.py
+from django.core.management import call_command
+from django.http import HttpResponse
+
 
 ga_key = settings.GA_MEASUREMENT_ID
 not_allowed_chars = r'[<>:"/\\|?*]'
@@ -40,6 +44,13 @@ def sanitize_file_name(title):
     title = title.lower()
 
     return title
+
+
+def database_dump(request):
+    response = HttpResponse(content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="db.json"'
+    call_command('dumpdata', stdout=response, format='json', indent=4)
+    return response
 
 
 def home_view(request):
@@ -105,15 +116,10 @@ def handle_chat_question(request):
     address_link = url.rsplit('gallery/')[1][:-1]
     decoded_link = urllib.parse.unquote(address_link)
     artwork = Artwork.objects.filter(link__iexact=decoded_link).first()
-    # print("in handle chat", decoded_link)
-    # print("artwork image", artwork.image)
     if artwork is None:
         return JsonResponse({'answer': 'Artwork not found'})
 
-    context = artwork.description
-    title = artwork.title
-    print(title)
-    answer = AnswerGenerator().produce_answer(question, language, title, context, artwork.thumb_image)
+    answer = AnswerGenerator().produce_answer(question, language, artwork)
 
     return JsonResponse({'answer': answer})
 
@@ -186,7 +192,7 @@ def add_artworks_via_folder(request):
                 subject=extracted_data['Subject'],
                 type_of_object=extracted_data['Type of Object'],
                 century=century,
-                validated_by=extracted_data['Validated by'],
+                description_validated_by=extracted_data['Validated by'],
                 web_link=extracted_data['Link'],
                 link=masterpiece,
             )
