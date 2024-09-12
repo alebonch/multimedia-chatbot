@@ -10,14 +10,16 @@ import json
 import string
 from dotenv import load_dotenv
 from langdetect import detect
-from .models import Artwork, Chat
+from .models import Artwork, Chat, Metadata
+from django.templatetags.static import static
+from django.utils.html import escape
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 # OPEN-AI APIs
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_KEY')
 # Set up the model
-model_engine = "gpt-4o-2024-05-13"  # "gpt-4-0125-preview""text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
+model_engine = "gpt-4o-mini"# "gpt-4o-2024-05-13"  # "gpt-4-0125-preview""text-davinci-003""gpt-4"gpt-3.5-turbo-1106  gpt-3.5-turbo-0125
 
 
 # i_dont_know_answer = ["I don't have this information",
@@ -109,11 +111,11 @@ class AnswerGenerator:
         with open("static/assets/json/unresolved_questions.json", "w", encoding='utf-8') as json_file:
             json.dump(self.unresolved_questions, json_file, indent=2, ensure_ascii=False)
 
-    def produce_answer(self, question, language, artwork):
+    def produce_answer(self, question, language, artwork, metadata = None):
         context = (artwork.description + " year: " + str(artwork.year) + " subject: " + artwork.subject +
                    " type of object: " + artwork.type_of_object +
                    " materials and techniques: " + artwork.materials_and_techniques +
-                   " measurament: " + artwork.measurement + " maker: " + artwork.maker)
+                   " measurament: " + artwork.measurement + " maker: " + artwork.maker+"\n")
         title = artwork.title
         image_path = artwork.thumb_image
         if title != self.last_artwork_title:
@@ -123,52 +125,46 @@ class AnswerGenerator:
             print('resetted last question and last answer')
         self.last_artwork_title = title
         base64_image = encode_image(image_path)
-        system_prompt = (
-            "Follow these steps to answer the user question: "
-            "Step 1: Read the question carefully, understand it and remember the language it has been written. "
-            "Step 2: Provide a clear answer keeping in mind the following guidelines: "
-            "- Answer in the same language as the question. "
-            "- Answer within 30 words "
-            "- If the question is unrelated to the artwork, please state so. "
-            "- If there's difficulty understanding the question or if the question is not comprehensible, "
-            "explicitly state that and ask the user to reformulate the question. Use one of these responses: "
-            "'I'm sorry, I didn't understand the question. Could you please reformulate it?' "
-            "'I didn't catch that. Could you clarify your question?' "
-            "'Your question is not clear to me. Could you please rephrase?' "            
-            "- If the information is not available in the context, try your best to generate an answer based on the "
-            "available information. If you can't provide an answer, then you can randomly use one of these possible "
-            "responses: "
-            "'I'm sorry, but I don't have that information in the context provided.' "
-            "'I apologize, but I can't find that information in the details I have.' "
-            "'Sorry, I don't have those details in the given context.' "
-            "'I'm afraid that information isn't available in the context I have.' "
-            "'I can't find this information in the artwork's details.' "
-            "and suggest the user to ask something else. "
-            "- Never start your answer with 'Answer:' and never use names or information that are not in the 'Context'. "
-            "- If the question is in first person singular, respond in second person singular. "
-            "Step 3: Translate the produced answer in the same language of the question. "
-            "Step 4: Provide the answer to the user in JSON format with the following keys: question, question language, answer, answer translated, resolved, understood. "
-            "Step 5: The JSON format should be: "
-            '{'
-            '"question": "The original question", '
-            '"question language": "The language of the question", '
-            '"answer": "The concise answer", '
-            '"answer translated": "The translated answer", '
-            '"resolved": "True if answered with context informations, False if not (unresolved)", '
-            '"understood": "True if question is understood, False if not understood"'
-            '}'
-        )
-        prompt = (f"You are an assistant for question-answering tasks. Consider the artwork titled '{title}' "
-                  f"and use the following pieces of retrieved Context to answer the question "
-                 f"Context: {context}. \n"
-                 f"Question: {question}. \n"
-                 f"Answer:"
-                  )
+        # portare in json
+
+        #prendere metadati se ci sono facendo query
+
+        with open("artworks/prompts/prompts.json", 'r') as json_file:
+            prompts = json.load(json_file)
+
+        system_prompt = prompts['system_prompt']
+        prompt_template = prompts['prompt_template']
+        
         if self.last_question != "" and self.last_answer != "":
             system_prompt += (f" - If the current question is the same as the last question, generate a different "
-                              f"response to avoid repetition. Last Q: {self.last_question} Last A: {self.last_answer} \n")
+                              f"response to avoid repetition. Last Q: {self.last_question} Last A: {self.last_answer} \n "
+                              f"- If the current question is similar to the last question, generate a different response ")
+            #checker metadati
+
+        if metadata is not None:
+            metadata_types = set()  
+            i = 0
+            metadata_context = "//////////////// METADATAs divider \\\\\\\\\\\\\\\\ \n Number of metadatas: "+str(len(metadata))+"\n"
+            for value in metadata:
+                i += 1
+                metadata_context += (" | description of "+ str(i) +"° metadata ("+ value.type +"): "
+                            +value.description+"\n  metadata_id: "+str(value.id)+"\n")
+                meta_type = value.type if value.type else "Unknown type"
+                metadata_types.add(meta_type)
+            prompt_template += prompts['prompt_metadata']
+            if 'audio' in metadata_types:
+                system_prompt += prompts['prompt_audio']
+            if 'video' in metadata_types:
+                system_prompt += prompts['prompt_video']
+            if 'link' in metadata_types:
+                system_prompt += prompts['prompt_link']
+            prompt = prompt_template.format(title=title, context=context, metadatas=metadata_context, question=question)
+        else:
+            prompt = prompt_template.format(title=title, context=context, metadatas="null", question=question)
+        
         print(language)
 
+        print('context: ',context)
         retry_count = 0
         max_retries = 3
         retry_delay = 1  # seconds
@@ -185,14 +181,35 @@ class AnswerGenerator:
                              }
                         ]},
                     ],
-                    temperature=0.25,
+                    temperature=0.55,
                 )
                 # choices = completion.choices
                 answer = completion.choices[0].message["content"]
+                json_dict = extract_json(answer)
+                html = ""
+                if json_dict['metadata']["metadata_id"] != "None":
+                    metadata_id = json_dict['metadata']["metadata_id"]
+                    metadata = Metadata.objects.get(id=metadata_id)
+                    if metadata.type == 'audio':
+                        # Use static to construct the correct URL
+                        audio_url = static(metadata.link)  
+                        html = f'<audio controls class= "custom-audio"><source src="{escape(audio_url)}" type="audio/mpeg"></audio>'
+                    
+                    elif metadata.type == 'video':
+                        # Use static to construct the correct URL for video
+                        video_url = static(metadata.link)  
+                        html = f'<video controls class= "custom-video"><source src="{escape(video_url)}" type="video/mp4"></video>'
+                    
+                    elif metadata.type == 'link':
+                        # Escape the link properly
+                        weblink = escape(metadata.weblink)
+                        html = f'<button class="custom-button" onclick="window.open(\'{weblink}\', \'_blank\');">Click me!</button>'
                 chat = analyze_answer(answer, question, language, artwork)
-
                 self.last_question = question
-                self.last_answer = chat.answer
+                if chat is not None:
+                    self.last_answer = chat.answer
+                else:
+                    self.last_answer = answer 
 
                 self.save_data()
                 break  # Break the loop if the API call is successful
@@ -204,8 +221,8 @@ class AnswerGenerator:
             print("Retrying in {} second(s)...".format(retry_delay))
             time.sleep(retry_delay)
 
-        print('answer', chat.answer)
-        return self.last_answer
+        print('answer: ', self.last_answer)
+        return self.last_answer, html
 
 
 def encode_image(image_path):

@@ -6,7 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render
-from .models import Artwork
+from .models import Artwork, Metadata
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -103,8 +103,25 @@ class Artworkchat(View):
 
     def get(self, request, link):
         artwork = Artwork.objects.get(link=link)
-        context = {'artwork': artwork, 'ga_key': ga_key}
+        metadata = Metadata.objects.filter(artwork=artwork.id)
+        additional_metadata = Metadata.objects.filter(museumgroup=artwork.location)
+        metadata = metadata | additional_metadata
+        audio = 0
+        video = 0
+        links = 0
+        for meta in metadata:
+            if meta.type == 'audio':
+                audio += 1
+            elif meta.type == 'video':
+                video += 1
+            elif meta.type == 'link':
+                links += 1
+        context = {'artwork': artwork, 'ga_key': ga_key, 'audio': audio, 'video': video, 'link': links}
+        #
         return render(request, "artwork-chat.html", context)
+    
+    
+
 @csrf_exempt
 def handle_chat_question(request):
     url = request.POST.get("url")
@@ -118,11 +135,15 @@ def handle_chat_question(request):
     artwork = Artwork.objects.filter(link__iexact=decoded_link).first()
     if artwork is None:
         return JsonResponse({'answer': 'Artwork not found'})
+    #get metadas
+    metadata = Metadata.objects.filter(artwork=artwork.id)
+    #check if there are metadata shared in the museum group
+    additional_metadata = Metadata.objects.filter(museumgroup=artwork.location)
+    metadata = metadata | additional_metadata
 
-    answer = AnswerGenerator().produce_answer(question, language, artwork)
+    answer, html = AnswerGenerator().produce_answer(question, language, artwork, metadata)
 
-    return JsonResponse({'answer': answer})
-
+    return JsonResponse({'answer': answer, 'html': html})
 
 @login_required
 @staff_member_required
@@ -200,7 +221,78 @@ def add_artworks_via_folder(request):
 
         return JsonResponse({'success': True})
 
+#TODO: add metadata via folder
+#tutta questa funziona è da riscrivere: bisogna che i file vengano messi nella cartella giusta e che vengano letti i metadati
+@csrf_exempt
+def add_metadata_via_folder(request):
+    if request.method == 'POST':
+        metadata_directory = 'static/assets/add_new_metadatas/'
+        audio_directory = 'static/assets/audio/'
+        video_directory = 'static/assets/video/'
 
+        # List files in the directory
+        file_list = os.listdir(metadata_directory)
+
+        metadata_added = []
+
+        for file in file_list:
+            if file.endswith('.txt'):
+                file_path = os.path.join(metadata_directory, file)
+                with open(file_path, 'r', encoding='utf-8') as txt_file:
+                    content = txt_file.read()
+
+                # Extract metadata using regex
+                artwork_match = re.search(r'artwork: (.+)', content)
+                type_match = re.search(r'type: (.+)', content)
+                url_match = re.search(r'url: (.+)', content)
+                location_match = re.search(r'location: (.+)', content)
+
+                if all([artwork_match, type_match, url_match, location_match]):
+                    artwork_title = artwork_match.group(1).strip()
+                    metadata_type = type_match.group(1).strip()
+                    weblink = url_match.group(1).strip()
+                    museumgroup = location_match.group(1).strip()
+
+                    # Get the first line as description
+                    description = content.split('\n')[0].strip()
+
+                    # Get or create the associated artwork
+                    artwork, created = Artwork.objects.get_or_create(title=artwork_title)
+
+                    # Create metadata object
+                    metadata = Metadata(
+                        type=metadata_type,
+                        link=file.replace('.txt', '.' + metadata_type) if metadata_type != 'link' else weblink,
+                        description=description,
+                        artwork=artwork,
+                        weblink=weblink,
+                        museumgroup=museumgroup
+                    )
+                    metadata.save()
+
+                    # Move associated files if they exist
+                    if metadata_type in ['audio', 'video']:
+                        associated_file = file.replace('.txt', '.' + metadata_type)
+                        source_path = os.path.join(metadata_directory, associated_file)
+                        if os.path.exists(source_path):
+                            destination_directory = audio_directory if metadata_type == 'audio' else video_directory
+                            destination_path = os.path.join(destination_directory, associated_file)
+                            shutil.move(source_path, destination_path)
+
+                    metadata_added.append({
+                        'file': file,
+                        'type': metadata_type,
+                        'artwork': artwork_title,
+                        'weblink': weblink,
+                        'museumgroup': museumgroup
+                    })
+
+                # Remove the processed text file
+                os.remove(file_path)
+
+        return JsonResponse({'success': True, 'metadata_added': metadata_added})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
 def find_year_century_from_period(time_period):
     year = "Unknown"
     century = "Unknown"

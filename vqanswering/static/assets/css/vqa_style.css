@@ -545,8 +545,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     padding: 1vh 1vw;
-    height: 80vh;
-    max-height: 96%;
+    height: 90vh;
+    max-height: 100%;
     width: 100%;
     max-width: 50%;
     justify-content: space-evenly;
@@ -734,6 +734,18 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     word-wrap: break-word;
 }
+.msj-metadata {
+    float: left;
+    background: #9ed9f2;
+    color: white;
+    word-wrap: break-word;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    display: auto;
+    align-items: center;
+    justify-content: center;
+}
 
 .input_text {
     border: 0;
@@ -841,6 +853,89 @@ input {
 }
 #language-select {
     display: none;
+}
+.custom-audio {
+    width: 100%;
+    max-width: 300;
+    height: 50px;
+    border: 2px solid #9ed9f2;
+    border-radius: 10px;
+    background-color: #9ed9f2;
+    overflow: hidden;
+}
+
+.custom-audio::-webkit-media-controls-panel {
+    background-color: #007BFF;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.custom-audio::-webkit-media-controls-play-button {
+    background-color: #007BFF;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.custom-audio::-webkit-media-controls-timeline {
+    background-color: #007BFF;
+    border-radius: 10px;
+    height: 1px; 
+}
+
+.custom-audio::-webkit-media-controls-timeline::-webkit-slider-runnable-track {
+    height: 4px; /* Adjust the track height */
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.custom-audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+    background-color: #FFFFFF;
+    border-radius: 50%;
+}
+.custom-audio::-webkit-media-controls-slider {
+    background-color: #ffffff; /* Color of the slider handle */
+    height: 6px; /* Adjust the height if needed */
+    border-radius: 10px;
+}
+.custom-button {
+    padding: 15px 30px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+}
+
+.custom-button:active {
+    background-color: #004085;
+}
+
+.custom-video {
+    width: 100%;
+    max-width: 600px;
+    border: 4px solid #9ed9f2;
+    border-radius: 15px;
+    transition: transform 0.2s ease;
+}
+
+.custom-video:hover {
+    transform: scale(1.02);
+}
+
+.custom-video::-webkit-media-controls-panel {
+    background-color: inherit;
+    border-radius: 15px;
+}
+
+.custom-video::-webkit-media-controls-play-button,
+.custom-video::-webkit-media-controls-volume-slider {
+    filter: invert(100%);
 }
 
 

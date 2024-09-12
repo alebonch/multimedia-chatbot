@@ -37,6 +37,24 @@ class Chat(models.Model):
     def __str__(self):
         return self.question
 
+class Metadata(models.Model):
+
+    TYPE_CHOICES = [
+        ('audio', 'Audio'),
+        ('link', 'Link'),
+        ('video', 'Video'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    type = models.CharField(max_length=100,choices=TYPE_CHOICES)
+    link = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField()
+    artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, null=True, blank=True)
+    weblink = models.CharField(max_length=255, default="-",null=True, blank=True)
+    museumgroup = models.CharField(max_length=200, default="Is not shared")
+
+    def __artwork__(self):
+        return self.artwork
 
 # Connect the signal receiver to the pre_delete signal of Artwork
 pre_delete.connect(delete_artwork_images, sender=Artwork)

@@ -24,7 +24,6 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
     flag_icon.addClass('grayed-out')
     console.log('Using speech-polyfill not allowed');
 }
-
 let userLanguageName = 'English (United Kingdom)';
 window.onload = function () {
     fetch('../../static/assets/json/languages.json')
@@ -157,12 +156,19 @@ const insertChat = (who, text, time = 0) => {
             '</div>' +
             '</div>' +
             '</li>';
-    } else {
+    } else if (who === "me") {
         control = '<li style="width:100%;">' +
             '<div class="msj-rta macro">' +
             '<div class="text">' +
             '<p class="text-r">' + text + '</p>' +
             '<p>' + date + '</p>' +
+            '</div>' +
+            '</li>';
+    } else {
+        // metadata named as text
+        control = '<li style="width:100%">' +
+            '<div class="msj-metadata macro">' + text +
+            '</div>' +
             '</div>' +
             '</li>';
     }
@@ -177,7 +183,6 @@ const insertChat = (who, text, time = 0) => {
 const resetChat = () => {
     $(".chat-ul ul").empty();
 }
-
 const goPython = (text, p_link) => {
     const token = $('input[name="csrfToken"]').attr('value');
     console.log(userLanguageName, userLang)
@@ -191,9 +196,15 @@ const goPython = (text, p_link) => {
             'csrfmiddlewaretoken': token
         }
     }).done(result => {
-        const answer = result['answer'].toString();
+        answer = result['answer'].toString();
+        //PARSER FOR METADATA
+        // Estrazione del contenuto HTML
+        htmlContent = result['html'].toString();
         insertChat("you", answer, 150);
-    }).fail((jqXHR, textStatus, errorThrown) => {
+        // here we check if there are any metadatas to display, then we display them
+        if(htmlContent != ""){
+            insertChat("metadata", htmlContent, 150);
+    }}).fail((jqXHR, textStatus, errorThrown) => {
         console.error("Request failed: " + textStatus + ", " + errorThrown);
         window.alert("An error occurred while processing your request. Please try again.");
     });
@@ -211,9 +222,23 @@ $(".input_text").on("keydown", function (e) {
         }
     }
 });
-
-
-
+const insertMetadata = () => {
+    const token = $('input[name="csrfToken"]').attr('value');
+    console.log(userLanguageName, userLang)
+    $.ajax({
+        type: "POST",
+        url: "/handle_chat_question/metadata/",
+        data: {
+            'url': p_link.toString(),
+            'csrfmiddlewaretoken': token
+        }}).done(result => {
+            msg = result['msg'].toString();
+            insertChat("you", msg, 2000);    
+        }).fail((jqXHR, textStatus, errorThrown) => {
+            console.error("Request failed: " + textStatus + ", " + errorThrown);
+            window.alert("An error occurred while processing your request. Please try again.");
+        });
+};
 const startRecording = () => {
     if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
         console.log('SpeechRecognition API is not supported in this browser');
@@ -287,5 +312,6 @@ resetChat();
 //-- Print Messages
 insertChat("you", "Hi! Nice to meet you!", 0);
 insertChat("you", "Ask me something about this artwork!", 1500);
+insertMetadata();
 
 checkMicrophoneAvailability();

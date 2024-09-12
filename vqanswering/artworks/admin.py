@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Artwork, Chat
+from .models import Artwork, Chat, Metadata
 
 # admin.py
 from django.http import HttpResponseRedirect
@@ -37,8 +37,19 @@ class ChatAdmin(admin.ModelAdmin):
     #         return self.download_database_dump(request, queryset)
     #     return super().response_action(request, queryset)
 
+class MetadataAdmin(admin.ModelAdmin):
+    list_display = ('artwork', 'type', 'description', 'museumgroup', 'weblink')
+    list_filter = ('type', 'museumgroup')
+    search_fields = ('type', 'description', 'museumgroup', 'weblink')
+    readonly_fields = ('link',)  # If you want the 'link' field to be read-only
+
+    def save_model(self, request, obj, form, change):
+        # Custom logic for saving the Metadata object can be added here
+        super().save_model(request, obj, form, change)
+
+
 
 admin.site.register(Chat, ChatAdmin)
 admin.site.site_header = 'ReInHerit VIOLA Admin'
 admin.site.register(Artwork, ArtworkAdmin)
-
+admin.site.register(Metadata, MetadataAdmin)
